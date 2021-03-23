@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace Autopark.FactoryMethod.Utils
+namespace AutoPark.FactoryMethod.Utils
 {
-    interface IMovable
+    public interface IMovable
     {
-        void Move(int id, ColorType colorType, DateTime rentDate,
-            long weight, decimal cost);
+        void Move();
     }
 }

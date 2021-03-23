@@ -1,6 +1,6 @@
-﻿namespace Autopark.FactoryMethod.Utils
+﻿namespace AutoPark.FactoryMethod.Utils
 {
-    enum ColorType
+    public enum ColorType
     {
         Blue,
         White,

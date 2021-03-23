@@ -1,22 +1,25 @@
-﻿using Autopark.FactorMethod.BaseProduct;
-using Autopark.FactoryMethod.Utils;
+﻿using AutoPark.FactorMethod.BaseProduct;
+using AutoPark.FactoryMethod.Utils;
+using AutoPark.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Autopark.FactoryMethod.Products.MotoCars
+namespace AutoPark.FactoryMethod.Products.MotoCars
 {
     class Lamborghini : Car
     {
-        public Lamborghini(int id, ColorType color, DateTime rentDate, long weight, decimal cost) : base(id, color, rentDate, weight, cost)
+        public Lamborghini(int id, ColorType color, RentPeriod rentPeriod, long weight, decimal cost) 
+            : base(id, color, rentPeriod, weight, cost)
         {
         }
 
         public override void Move()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Lamborghini move");
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, ";
         }
     }
 }

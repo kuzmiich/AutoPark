@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Autopark.InputService.ConsoleInput
+namespace AutoPark.InputService.ConsoleInput
 {
     public class ConsoleInput : IConsoleInput
     {

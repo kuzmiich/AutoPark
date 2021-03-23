@@ -1,4 +1,4 @@
-﻿namespace Autopark.InputService.ConsoleInput
+﻿namespace AutoPark.InputService.ConsoleInput
 {
     public interface IConsoleInput
     {

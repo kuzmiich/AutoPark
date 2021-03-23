@@ -1,27 +1,38 @@
-﻿using Autopark.FactoryMethod.Utils;
+﻿using AutoPark.FactoryMethod.Utils;
+using AutoPark.Utils;
 using System;
 
-namespace Autopark.FactorMethod.BaseProduct
+namespace AutoPark.FactorMethod.BaseProduct
 {
     abstract class Car : IMovable
     {
         public virtual int Id { get; set; }
         public virtual ColorType Color { get; set; }
-        public DateTime RentDate { get; set; }
-        public virtual long Weight { get; set; }
+        public virtual RentPeriod RentPeriod { get; set; }
+        public decimal Cost { get; set; }
+        public long Weight { get; init; }
+
         public virtual decimal CostRent { get; set; }
+        public double KM { get; private set; }
         public const TransportType Type = TransportType.MotorCar;
 
-        protected Car(int id, ColorType color, DateTime rentDate, long weight, decimal cost)
+        protected Car(int id, ColorType color, RentPeriod rentDate, long weight, decimal cost)
         {
             Id = id;
             Color = color;
-            RentDate = rentDate;
+            RentPeriod = rentDate;
             Weight = weight;
-            CostRent = cost;
+            Cost = cost;
         }
 
-        public abstract void Move(int id, ColorType colorType,
-            DateTime rentDate, long weight, decimal cost);
+
+        public override string ToString()
+        {
+            return $"Id - {Id}, Color - {Color}, Rent period count hour - {RentPeriod.HourCount}," +
+            $"Rent period count day - {RentPeriod.DayCount}, Weight - {Weight}, Cost - {Cost}, Type - {Type}";
+        }
+
+
+        public abstract void Move();
     }
 }

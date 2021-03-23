@@ -1,4 +1,4 @@
-﻿namespace Autopark.OutputService.ConsoleOutput
+﻿namespace AutoPark.OutputService.ConsoleOutput
 {
     public interface IConsoleOutput
     {

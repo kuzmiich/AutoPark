@@ -1,19 +1,24 @@
-﻿using Autopark.FactorMethod.BaseProduct;
-using Autopark.FactoryMethod.Utils;
+﻿using AutoPark.FactorMethod.BaseProduct;
+using AutoPark.FactoryMethod.Utils;
+using AutoPark.Utils;
 using System;
 
-namespace Autopark.FactorMethod.Products.MotoCar
+namespace AutoPark.FactorMethod.Products.MotoCar
 {
     class Lada : Car
     {
-        public Lada(int id, ColorType color, DateTime rentDate, long weight, decimal cost) 
+        public Lada(int id, ColorType color, RentPeriod rentDate, long weight, decimal cost)
             : base(id, color, rentDate, weight, cost)
         {
         }
 
         public override void Move()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Lada move");
+        }
+        public override string ToString()
+        {
+            return $"{base.ToString()}, ";
         }
     }
 }

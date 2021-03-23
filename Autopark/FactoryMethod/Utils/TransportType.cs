@@ -1,10 +1,10 @@
-﻿namespace Autopark.FactoryMethod.Utils
+﻿namespace AutoPark.FactoryMethod.Utils
 {
     enum TransportType 
     { 
         MotorCar, 
         Truck, 
         Plane,
-
+        Train,
     }
 }

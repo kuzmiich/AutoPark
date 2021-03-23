@@ -1,20 +1,20 @@
-﻿using Autopark.FactorMethod.CreateArea;
-using Autopark.FactoryMethod.BaseProduct;
-using Autopark.FactoryMethod.Utils;
-using Autopark.InputService.ConsoleInput;
-using Autopark.OutputService.ConsoleOutput;
+﻿using AutoPark.FactorMethod.BaseCreator;
+using AutoPark.FactorMethod.CreateArea.MotoCarCreators;
+using AutoPark.FactorMethod.CreateArea.TruckCreators;
+using AutoPark.FactoryMethod.CreateArea.MotoCarCreators;
+using AutoPark.FactoryMethod.Utils;
 using System;
 using System.Collections.Generic;
 
-namespace Autopark.Utils
+namespace AutoPark.Utils
 {
-    public class Generator
+    public class Generator : IGenerator
     {
-        private readonly Random _random = new Random();
-        private readonly IConsoleOutput _outputService;
-        private readonly IConsoleInput _inputService;
+        private readonly Random _random = new();
+        private static readonly object _syncRoot = new();
+        private static Generator _instance;
 
-        private static List<string> PRODUCER_CONTRIES = new List<string>
+        private static List<string> ProducerContries = new()
         {
             "Japan",
             "China",
@@ -24,48 +24,84 @@ namespace Autopark.Utils
             "Germany",
             "India"
         };
-        private static IEnumerable<string> Colors = new List<string>
+        private static List<ColorType> Colors = new()
         {
-            ColorType.Black.ToString(),
-            ColorType.Red.ToString(),
-            ColorType.Black.ToString(),
-            ColorType.Black.ToString(),
-            ColorType.Black.ToString(),
+            ColorType.Blue,
+            ColorType.White,
+            ColorType.Red,
+            ColorType.Yellow,
+            ColorType.Green,
+            ColorType.Gold,
+            ColorType.Black,
+            ColorType.Silver,
         };
 
-        public Generator(IConsoleOutput outputService, IConsoleInput inputService)
+        private Generator()
         {
-            _outputService = outputService;
-            _inputService = inputService;
         }
 
-        public bool GetNumber(out int number, string message)
+        public static Generator GetInstance()
         {
-            _outputService.ShowMessage(message);
-            return int.TryParse(_inputService.GetString(), out number);
+            if (_instance == null)
+            {
+                lock (_syncRoot)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new Generator();
+                    }
+                }
+            }
+            return _instance;
         }
 
-        public ICollection<IMovable> GetTransport(int count)
+        public List<IMovable> GetTruck(int count)
         {
-            List<IMovable> movables;
-            DateTime rentDate = DateTime.Now;
+            List<IMovable> transport = new();
 
-            int index = _random.Next(PRODUCER_CONTRIES.Count);
             for (int i = 1; i < count + 1; i++)
             {
-                if (i < count / 2)
+                Creator creator = null;
+                RentPeriod rentPeriod = new RentPeriod(_random.Next(1, 30), _random.Next(1, 4));
+                int index = _random.Next(ProducerContries.Count);
+                int truckWeight = _random.Next(3000, 20000);
+                decimal cost = _random.Next(30000, 200000);
+
+                creator = new ZilCreator(ProducerContries[index]);
+                var truck = creator.Create(i, Colors[index], rentPeriod, truckWeight, cost);
+                transport.Add(truck);
+            }
+
+            return transport;
+        }
+        public List<IMovable> GetMotoCars(int count)
+        {
+            List<IMovable> transport = new();
+            for (int i = 1; i < count + 1; i++)
+            {
+                var index = _random.Next(ProducerContries.Count);
+
+                RentPeriod rentPeriod = new RentPeriod(_random.Next(1, 30), _random.Next(1, 4));
+                int truckWeight = _random.Next(3000, 20000);
+                const int CountMotoCarCreator = 2;
+
+                Creator creator;
+                decimal cost;
+                if (_random.Next(CountMotoCarCreator) == 0)
                 {
-                    TruckCreator truckCreator = new TruckCreator(PRODUCER_CONTRIES[index]);
-                    Truck truck = truckCreator.Create(i, ColorType, rentDate);
+                    cost = _random.Next(10000, 25000);
+                    creator = new LadaCreator(ProducerContries[index]);
                 }
                 else
                 {
-
+                    cost = _random.Next(100000, 300000);
+                    creator = new LamborghiniCreator(ProducerContries[index]);
                 }
+                var truck = creator.Create(i, Colors[index], rentPeriod, truckWeight, cost);
+                transport.Add(truck);
             }
-            MotoCarCreator carCreator = new MotoCarCreator("Japan");
 
-            return movables;
+            return transport;
         }
     }
 }

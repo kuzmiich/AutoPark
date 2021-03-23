@@ -1,4 +1,4 @@
-﻿namespace Autopark.Utils
+﻿namespace AutoPark.Utils
 {
     interface IService
     {

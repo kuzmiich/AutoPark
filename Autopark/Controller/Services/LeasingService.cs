@@ -1,10 +1,10 @@
-﻿using Autopark.FactoryMethod.Utils;
-using Autopark.OutputService.ConsoleOutput;
-using Autopark.Utils;
+﻿using AutoPark.FactoryMethod.Utils;
+using AutoPark.OutputService.ConsoleOutput;
+using AutoPark.Utils;
 using System;
 using System.Collections.Generic;
 
-namespace Autopark.Controller.Services
+namespace AutoPark.Controller.Services
 {
     /// <summary>
     /// Service 3
@@ -12,17 +12,17 @@ namespace Autopark.Controller.Services
     class LeasingService : IService
     {
         private readonly List<IMovable> _transport;
-        private readonly IConsoleOutput _outputService;
+        private readonly IConsoleOutput _consoleOutput;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="transport"></param>
-        /// <param name="outputService"></param>
-        public LeasingService(List<IMovable> transport, IConsoleOutput outputService)
+        /// <param name="consoleOutput"></param>
+        public LeasingService(List<IMovable> transport, IConsoleOutput consoleOutput)
         {
             _transport = transport;
-            _outputService = outputService;
+            _consoleOutput = consoleOutput;
         }
 
 
@@ -31,7 +31,7 @@ namespace Autopark.Controller.Services
         /// </summary>
         public void RunService()
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
         }
     }
 }

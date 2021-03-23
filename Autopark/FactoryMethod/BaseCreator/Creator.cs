@@ -1,7 +1,8 @@
-﻿using Autopark.FactoryMethod.Utils;
+﻿using AutoPark.FactoryMethod.Utils;
+using AutoPark.Utils;
 using System;
 
-namespace Autopark.FactorMethod.BaseCreator
+namespace AutoPark.FactorMethod.BaseCreator
 {
     /// <summary>
     /// Base class for create transport
@@ -19,9 +20,10 @@ namespace Autopark.FactorMethod.BaseCreator
 
         public abstract string ProducerCountry { get; set; }
 
-        abstract public IMovable Create(int id,
+        abstract public IMovable Create(
+            int id,
             ColorType colorType,
-            DateTime rentDate,
+            RentPeriod rentDate,
             long weight,
             decimal cost);
     }

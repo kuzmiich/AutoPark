@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Autopark.OutputService.ConsoleOutput
+namespace AutoPark.OutputService.ConsoleOutput
 {
     public class ConsoleOutput : IConsoleOutput
     {

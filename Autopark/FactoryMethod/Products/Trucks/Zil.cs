@@ -1,15 +1,26 @@
-﻿using Autopark.FactorMethod.BaseProduct;
-using Autopark.FactoryMethod.BaseProduct;
-using Autopark.FactoryMethod.Utils;
+﻿using AutoPark.FactorMethod.BaseProduct;
+using AutoPark.FactoryMethod.BaseProduct;
+using AutoPark.FactoryMethod.Utils;
+using AutoPark.Utils;
 using System;
 
-namespace Autopark.FactorMethod.Products.Trucks
+namespace AutoPark.FactorMethod.Products.Trucks
 {
     class Zil : Truck
     {
-        public Zil(int id, ColorType color, DateTime rentDate, long weight, decimal cost) 
-            : base(id, color, rentDate, weight, cost)
+        public Zil(int id, ColorType color, RentPeriod rentPeriod, long weight, decimal cost) 
+            : base(id, color, rentPeriod, weight, cost)
         {
+        }
+
+        public override void Move()
+        {
+            Console.WriteLine("Zil move");
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, ";
         }
     }
 }
