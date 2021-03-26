@@ -5,7 +5,7 @@
 
 <p>Improve your skills in coded console applications:</p>
 --
-## Run in visual studio https://static.thenounproject.com/png/109880-200.png
+## Run in visual studio -⟩
 
 ### runable file - Program.cs
 --
