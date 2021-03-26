@@ -1,21 +1,23 @@
 ﻿using AutoPark.Controller.Services;
-using AutoPark.FactoryMethod.Utils;
-using AutoPark.InputService.ConsoleInput;
-using AutoPark.OutputService.ConsoleOutput;
-using AutoPark.Utils;
+using AutoPark.InputService;
+using AutoPark.Models.Engine;
+using AutoPark.Models.Utils.Entity;
+using AutoPark.Models.Utils.Interfaces;
+using AutoPark.OutputService;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AutoPark.Controller
 {
     public class MainController
     {
-        public IConsoleInput InputService { get; init; }
-        public IConsoleOutput OutputService { get; init; }
+        public IInputService InputService { get; init; }
+        public IOutputService OutputService { get; init; }
         public IGenerator Generator { get; init; }
-        public List<IMovable> Transport { get; set; }
+        public List<Vehicle> Transport { get; set; }
 
-        public MainController(IConsoleInput inputService, IConsoleOutput outputService, IGenerator generator)
+        public MainController(IInputService inputService, IOutputService outputService, IGenerator generator)
         {
             InputService = inputService;
             OutputService = outputService;
@@ -28,6 +30,7 @@ namespace AutoPark.Controller
             var carNumber = Convert.ToInt32(InputService.GetString());
 
             Transport = Generator.GetMotoCars(carNumber);
+            Transport.Zip(Generator.GetTruck(carNumber));
 
             List<IService> services = new List<IService>
             {

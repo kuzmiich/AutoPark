@@ -1,6 +1,7 @@
-﻿using AutoPark.FactoryMethod.Utils;
-using AutoPark.OutputService.ConsoleOutput;
-using AutoPark.Utils;
+﻿using AutoPark.Models.Engine;
+using AutoPark.Models.Utils.Entity;
+using AutoPark.Models.Utils.Interfaces;
+using AutoPark.OutputService;
 using System;
 using System.Collections.Generic;
 
@@ -11,14 +12,16 @@ namespace AutoPark.Controller.Services
     /// </summary>
     class AutoparkInfoService : IService
     {
-        private readonly List<IMovable> _transport;
-        private readonly IConsoleOutput _consoleOutput;
-
-        public AutoparkInfoService(List<IMovable> transport, IConsoleOutput consoleOutput)
+        public AutoparkInfoService(List<Vehicle> transport, IOutputService consoleOutput)
         {
-            _transport = transport;
-            _consoleOutput = consoleOutput;
+            Transport = transport;
+            ConsoleOutput = consoleOutput;
+            Engine = new AutoParkEngine(Transport);
         }
+
+        public List<Vehicle> Transport { get; }
+        public IOutputService ConsoleOutput { get; }
+        private AutoParkEngine Engine { get; set; }
 
         public void RunService()
         {

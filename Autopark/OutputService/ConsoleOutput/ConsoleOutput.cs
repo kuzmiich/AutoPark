@@ -2,7 +2,7 @@
 
 namespace AutoPark.OutputService.ConsoleOutput
 {
-    public class ConsoleOutput : IConsoleOutput
+    public class ConsoleOutput : IOutputService
     {
         private static readonly object _syncRoot = new object();
         private static ConsoleOutput _instance;

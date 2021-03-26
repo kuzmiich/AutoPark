@@ -1,8 +1,7 @@
 ﻿using AutoPark.FactorMethod.BaseCreator;
-using AutoPark.FactorMethod.Products.Trucks;
+using AutoPark.FactorMethod.Entity.Trucks;
+using AutoPark.FactoryMethod.BaseProduct;
 using AutoPark.FactoryMethod.Utils;
-using AutoPark.Utils;
-using System;
 
 namespace AutoPark.FactorMethod.CreateArea.TruckCreators
 {
@@ -14,13 +13,15 @@ namespace AutoPark.FactorMethod.CreateArea.TruckCreators
 
         public override string ProducerCountry { get; set; }
 
-        public override IMovable Create(int id,
+        public override Truck Create(int id,
             ColorType colorType,
-            RentPeriod rentPeriod,
             long weight,
-            decimal cost)
+            decimal cost,
+            int mileage,
+            int totalFuelCapacity
+            )
         {
-            return new Zil(id, colorType, rentPeriod, weight, cost);
+            return new Zil(id, colorType, cost, weight, mileage, totalFuelCapacity);
         }
     }
 }

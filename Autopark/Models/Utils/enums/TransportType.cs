@@ -1,6 +1,6 @@
 ﻿namespace AutoPark.FactoryMethod.Utils
 {
-    enum TransportType 
+    public enum TransportType 
     { 
         MotorCar, 
         Truck, 

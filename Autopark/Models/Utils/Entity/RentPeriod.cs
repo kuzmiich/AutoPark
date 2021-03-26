@@ -1,4 +1,4 @@
-﻿namespace AutoPark.Utils
+﻿namespace AutoPark.Models.Utils.Entity
 {
     public class RentPeriod
     {
@@ -16,10 +16,8 @@
             DayCount = dayCount;
         }
 
-        public RentPeriod(int hoursCount, int dayCount, int weekCount)
+        public RentPeriod(int hourCount, int dayCount, int weekCount) : this(hourCount, dayCount)
         {
-            HourCount = hoursCount;
-            DayCount = dayCount;
             WeekCount = weekCount;
         }
 

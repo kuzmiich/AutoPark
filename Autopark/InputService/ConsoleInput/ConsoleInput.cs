@@ -2,7 +2,7 @@
 
 namespace AutoPark.InputService.ConsoleInput
 {
-    public class ConsoleInput : IConsoleInput
+    public class ConsoleInput : IInputService
     {
         private static readonly object _syncRoot = new();
         private static ConsoleInput _instance;

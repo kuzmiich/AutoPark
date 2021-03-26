@@ -1,6 +1,5 @@
 ﻿using AutoPark.FactoryMethod.Utils;
-using AutoPark.Utils;
-using System;
+using AutoPark.Models.Utils.Entity;
 
 namespace AutoPark.FactorMethod.BaseCreator
 {
@@ -10,9 +9,9 @@ namespace AutoPark.FactorMethod.BaseCreator
     abstract class Creator
     {
         /// <summary>
-        /// 
+        /// Has info about producer country
         /// </summary>
-        /// <param name="producerCountry"></param>
+        /// <param name="producerCountry">Name produce country</param>
         protected Creator(string producerCountry)
         {
             ProducerCountry = producerCountry;
@@ -20,11 +19,23 @@ namespace AutoPark.FactorMethod.BaseCreator
 
         public abstract string ProducerCountry { get; set; }
 
-        abstract public IMovable Create(
+        /// <summary>
+        /// Method for create Transport
+        /// </summary>
+        /// <param name="id">Transport Id</param>
+        /// <param name="colorType">Transport color type </param>
+        /// <param name="rentDate">Transport rent date</param>
+        /// <param name="weight">Transport weight</param>
+        /// <param name="cost">Transport cost</param>
+        /// <param name="mileage">Transport mileage</param>
+        /// <param name="totalFuelCapacity">Transport total fuel capacity</param>
+        /// <returns>IMovable object</returns>
+        abstract public Vehicle Create(
             int id,
             ColorType colorType,
-            RentPeriod rentDate,
             long weight,
-            decimal cost);
+            decimal cost,
+            int mileage,
+            int totalFuelCapacity);
     }
 }

@@ -1,12 +1,8 @@
-﻿using AutoPark.FactorMethod.BaseCreator;
+﻿using AutoPark.FactorMethod.AbstractProduct;
+using AutoPark.FactorMethod.BaseCreator;
 using AutoPark.FactoryMethod.Products.MotoCars;
 using AutoPark.FactoryMethod.Utils;
-using AutoPark.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoPark.Models.Utils.Entity;
 
 namespace AutoPark.FactoryMethod.CreateArea.MotoCarCreators
 {
@@ -18,13 +14,15 @@ namespace AutoPark.FactoryMethod.CreateArea.MotoCarCreators
 
         public override string ProducerCountry { get; set; }
 
-        public override IMovable Create(int id,
+        public override Car Create(int id,
             ColorType colorType,
-            RentPeriod rentPeriod,
             long weight,
-            decimal cost)
+            decimal cost,
+            int mileage,
+            int totalFuelCapacity
+            )
         {
-            return new Lamborghini(id, colorType, rentPeriod, weight, cost);
+            return new Lamborghini(id, colorType, cost, weight, mileage, totalFuelCapacity);
         }
     }
 }
