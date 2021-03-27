@@ -1,9 +1,10 @@
-﻿using AutoPark.FactorMethod.BaseCreator;
-using AutoPark.FactorMethod.Entity.Trucks;
-using AutoPark.FactoryMethod.BaseProduct;
-using AutoPark.Utils.Enums;
+﻿using Autopark.FactorMethod.BaseCreator;
+using Autopark.FactorMethod.Entity.Trucks;
+using Autopark.FactoryMethod.BaseProduct;
+using Autopark.Utils.Entity;
+using Autopark.Utils.Enums;
 
-namespace AutoPark.FactorMethod.CreateArea.TruckCreators
+namespace Autopark.FactorMethod.CreateArea.TruckCreators
 {
     class ZilCreator : Creator
     {
@@ -15,13 +16,14 @@ namespace AutoPark.FactorMethod.CreateArea.TruckCreators
 
         public override Truck Create(int id,
             ColorType colorType,
+            RentPeriod rentPeriod,
             long weight,
             decimal cost,
             int mileage,
             int totalFuelCapacity
             )
         {
-            return new Zil(id, colorType, cost, weight, mileage, totalFuelCapacity);
+            return new Zil(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AutoPark.Utils.Utils.Interfaces
+﻿namespace Autopark.Utils.Utils.Interfaces
 {
     interface IContoller
     {

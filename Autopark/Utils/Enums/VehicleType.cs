@@ -1,6 +1,6 @@
-﻿namespace AutoPark.Utils.Enums
+﻿namespace Autopark.Utils.Enums
 {
-    public enum TransportType 
+    public enum VehicleType 
     { 
         MotorCar, 
         Truck, 

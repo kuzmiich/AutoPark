@@ -1,7 +1,7 @@
-﻿using AutoPark.Utils.Utils.Interfaces;
+﻿using Autopark.Utils.Utils.Interfaces;
 using System;
 
-namespace AutoPark.Services.OutputService.ConsoleOutput
+namespace Autopark.Services.OutputService.ConsoleOutput
 {
     public class ConsoleOutput : IOutputService
     {

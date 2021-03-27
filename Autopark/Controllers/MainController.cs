@@ -1,10 +1,10 @@
-﻿using AutoPark.Utils.Entity;
-using AutoPark.Utils.Utils.Interfaces;
+﻿using Autopark.Utils.Entity;
+using Autopark.Utils.Utils.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutoPark.Controllers
+namespace Autopark.Controllers
 {
     public class MainController : IContoller
     {
@@ -26,7 +26,7 @@ namespace AutoPark.Controllers
             var carNumber = Convert.ToInt32(InputService.GetString());
 
             Transport = Generator.GetMotoCars(carNumber);
-            Transport.Zip(Generator.GetTruck(carNumber));
+            Transport.Zip(Generator.GetTrucks(carNumber));
 
             var controllers = new List<IContoller>
             {

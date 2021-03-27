@@ -1,19 +1,19 @@
-﻿using AutoPark.Utils.Entity;
-using AutoPark.Utils.Enums;
-using AutoPark.Utils.Utils.Interfaces;
+﻿using Autopark.Utils.Entity;
+using Autopark.Utils.Enums;
+using Autopark.Utils.Utils.Interfaces;
 
-namespace AutoPark.FactoryMethod.BaseProduct
+namespace Autopark.FactoryMethod.BaseProduct
 {
     public abstract class Truck : Vehicle, IMovable
     {
-        public const TransportType Type = TransportType.Truck;
+        public const VehicleType Type = VehicleType.Truck;
 
         public Truck()
         {
         }
 
-        protected Truck(int id, RentPeriod rentPeriod, decimal costRent) 
-            : base(id, rentPeriod, costRent)
+        protected Truck(int id, RentPeriod rentPeriod) 
+            : base(id, rentPeriod)
         {
         }
 

@@ -1,6 +1,6 @@
-﻿using AutoPark.Utils.Enums;
+﻿using Autopark.Utils.Enums;
 
-namespace AutoPark.Utils.Entity
+namespace Autopark.Utils.Entity
 {
     public class Vehicle
     {
@@ -8,11 +8,10 @@ namespace AutoPark.Utils.Entity
         {
         }
 
-        public Vehicle(int id, RentPeriod rentPeriod, decimal costRent)
+        public Vehicle(int id, RentPeriod rentPeriod)
         {
             Id = id;
             RentPeriod = rentPeriod;
-            CostRent = costRent;
         }
 
         public Vehicle(int id, ColorType color, decimal cost, long weight, int mileage, int totalFuelCapacity)
@@ -28,7 +27,6 @@ namespace AutoPark.Utils.Entity
         public Vehicle(int id,
                        ColorType color,
                        RentPeriod rentPeriod,
-                       decimal costRent,
                        decimal cost,
                        long weight,
                        int mileage,
@@ -37,7 +35,6 @@ namespace AutoPark.Utils.Entity
             Id = id;
             Color = color;
             RentPeriod = rentPeriod;
-            CostRent = costRent;
             Cost = cost;
             Weight = weight;
             Mileage = mileage;

@@ -1,7 +1,7 @@
-﻿using AutoPark.Utils.Utils.Interfaces;
+﻿using Autopark.Utils.Utils.Interfaces;
 using System;
 
-namespace AutoPark.Services.InputService.ConsoleInput
+namespace Autopark.Services.InputService.ConsoleInput
 {
     public class ConsoleInput : IInputService
     {

@@ -1,9 +1,9 @@
-﻿using AutoPark.FactorMethod.AbstractProduct;
-using AutoPark.Utils.Entity;
-using AutoPark.Utils.Enums;
+﻿using Autopark.FactorMethod.AbstractProduct;
+using Autopark.Utils.Entity;
+using Autopark.Utils.Enums;
 using System;
 
-namespace AutoPark.FactoryMethod.Products.MotoCars
+namespace Autopark.FactoryMethod.Products.MotoCars
 {
     class Lamborghini : Car
     {
@@ -11,11 +11,11 @@ namespace AutoPark.FactoryMethod.Products.MotoCars
         {
         }
 
-        public Lamborghini(int id, RentPeriod rentPeriod, decimal costRent) : base(id, rentPeriod, costRent)
+        public Lamborghini(int id, RentPeriod rentPeriod) : base(id, rentPeriod)
         {
         }
 
-        public Lamborghini(int id, ColorType color, decimal cost, long weight, int mileage, int totalFuelCapacity) : base(id, color, cost, weight, mileage, totalFuelCapacity)
+        public Lamborghini(int id, ColorType color, RentPeriod rentPeriod, decimal cost, long weight, int mileage, int totalFuelCapacity) : base(id, color, rentPeriod, cost, weight, mileage, totalFuelCapacity)
         {
         }
 

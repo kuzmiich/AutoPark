@@ -1,7 +1,7 @@
-﻿using AutoPark.Utils.Entity;
+﻿using Autopark.Utils.Entity;
 using System.Collections.Generic;
 
-namespace AutoPark.Utils.Engines.Base
+namespace Autopark.Utils.Engines.Base
 {
     public abstract class AbstractEngine
     {

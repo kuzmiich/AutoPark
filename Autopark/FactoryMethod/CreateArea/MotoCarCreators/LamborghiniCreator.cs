@@ -1,9 +1,10 @@
-﻿using AutoPark.FactorMethod.AbstractProduct;
-using AutoPark.FactorMethod.BaseCreator;
-using AutoPark.FactoryMethod.Products.MotoCars;
-using AutoPark.Utils.Enums;
+﻿using Autopark.FactorMethod.AbstractProduct;
+using Autopark.FactorMethod.BaseCreator;
+using Autopark.FactoryMethod.Products.MotoCars;
+using Autopark.Utils.Entity;
+using Autopark.Utils.Enums;
 
-namespace AutoPark.FactoryMethod.CreateArea.MotoCarCreators
+namespace Autopark.FactoryMethod.CreateArea.MotoCarCreators
 {
     class LamborghiniCreator : Creator
     {
@@ -15,13 +16,14 @@ namespace AutoPark.FactoryMethod.CreateArea.MotoCarCreators
 
         public override Car Create(int id,
             ColorType colorType,
+            RentPeriod rentPeriod,
             long weight,
             decimal cost,
             int mileage,
             int totalFuelCapacity
             )
         {
-            return new Lamborghini(id, colorType, cost, weight, mileage, totalFuelCapacity);
+            return new Lamborghini(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity);
         }
     }
 }

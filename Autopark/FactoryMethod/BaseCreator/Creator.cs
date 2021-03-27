@@ -1,7 +1,7 @@
-﻿using AutoPark.Utils.Entity;
-using AutoPark.Utils.Enums;
+﻿using Autopark.Utils.Entity;
+using Autopark.Utils.Enums;
 
-namespace AutoPark.FactorMethod.BaseCreator
+namespace Autopark.FactorMethod.BaseCreator
 {
     /// <summary>
     /// Base class for create transport
@@ -24,15 +24,16 @@ namespace AutoPark.FactorMethod.BaseCreator
         /// </summary>
         /// <param name="id">Transport Id</param>
         /// <param name="colorType">Transport color type </param>
-        /// <param name="rentDate">Transport rent date</param>
+        /// <param name="rentPeriod">Transport rent period</param>
         /// <param name="weight">Transport weight</param>
         /// <param name="cost">Transport cost</param>
         /// <param name="mileage">Transport mileage</param>
         /// <param name="totalFuelCapacity">Transport total fuel capacity</param>
         /// <returns>IMovable object</returns>
-        abstract public Vehicle Create(
+        public abstract Vehicle Create(
             int id,
             ColorType colorType,
+            RentPeriod rentPeriod,
             long weight,
             decimal cost,
             int mileage,

@@ -1,9 +1,9 @@
-﻿using AutoPark.FactoryMethod.BaseProduct;
-using AutoPark.Utils.Entity;
-using AutoPark.Utils.Enums;
+﻿using Autopark.FactoryMethod.BaseProduct;
+using Autopark.Utils.Entity;
+using Autopark.Utils.Enums;
 using System;
 
-namespace AutoPark.FactorMethod.Entity.Trucks
+namespace Autopark.FactorMethod.Entity.Trucks
 {
     class Zil : Truck
     {
@@ -11,11 +11,11 @@ namespace AutoPark.FactorMethod.Entity.Trucks
         {
         }
 
-        public Zil(int id, RentPeriod rentPeriod, decimal costRent) : base(id, rentPeriod, costRent)
+        public Zil(int id, RentPeriod rentPeriod) : base(id, rentPeriod)
         {
         }
 
-        public Zil(int id, ColorType color, decimal cost, long weight, int mileage, int totalFuelCapacity) 
+        public Zil(int id, ColorType color, RentPeriod rentPeriod, decimal cost, long weight, int mileage, int totalFuelCapacity) 
             : base(id, color, cost, weight, mileage, totalFuelCapacity)
         {
         }
