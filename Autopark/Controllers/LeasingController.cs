@@ -1,18 +1,17 @@
-﻿using AutoPark.Models.Engine;
-using AutoPark.Models.Utils.Entity;
-using AutoPark.Models.Utils.Interfaces;
-using AutoPark.OutputService;
+﻿using AutoPark.Utils.Engines;
+using AutoPark.Utils.Entity;
+using AutoPark.Utils.Utils.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace AutoPark.Controller.Services
+namespace AutoPark.Controllers
 {
     /// <summary>
     /// Service 3
     /// </summary>
-    class LeasingService : IService
+    class LeasingController : IContoller
     {
-        public LeasingService(List<Vehicle> transport, IOutputService consoleOutput)
+        public LeasingController(List<Vehicle> transport, IOutputService consoleOutput)
         {
             Transport = transport;
             ConsoleOutput = consoleOutput;
@@ -27,7 +26,7 @@ namespace AutoPark.Controller.Services
         /// <summary>
         /// 
         /// </summary>
-        public void RunService()
+        public void RunController()
         {
             Console.WriteLine();
         }

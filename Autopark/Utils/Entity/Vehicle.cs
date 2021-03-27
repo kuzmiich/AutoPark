@@ -1,6 +1,6 @@
-﻿using AutoPark.FactoryMethod.Utils;
+﻿using AutoPark.Utils.Enums;
 
-namespace AutoPark.Models.Utils.Entity
+namespace AutoPark.Utils.Entity
 {
     public class Vehicle
     {

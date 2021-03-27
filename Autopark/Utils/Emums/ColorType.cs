@@ -1,4 +1,4 @@
-﻿namespace AutoPark.FactoryMethod.Utils
+﻿namespace AutoPark.Utils.Enums
 {
     public enum ColorType
     {

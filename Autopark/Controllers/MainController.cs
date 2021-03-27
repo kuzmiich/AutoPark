@@ -1,30 +1,26 @@
-﻿using AutoPark.Controller.Services;
-using AutoPark.InputService;
-using AutoPark.Models.Engine;
-using AutoPark.Models.Utils.Entity;
-using AutoPark.Models.Utils.Interfaces;
-using AutoPark.OutputService;
+﻿using AutoPark.Utils.Entity;
+using AutoPark.Utils.Utils.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutoPark.Controller
+namespace AutoPark.Controllers
 {
-    public class MainController
+    public class MainController : IContoller
     {
         public IInputService InputService { get; init; }
         public IOutputService OutputService { get; init; }
-        public IGenerator Generator { get; init; }
+        public IGeneratorService Generator { get; init; }
         public List<Vehicle> Transport { get; set; }
 
-        public MainController(IInputService inputService, IOutputService outputService, IGenerator generator)
+        public MainController(IInputService inputService, IOutputService outputService, IGeneratorService generator)
         {
             InputService = inputService;
             OutputService = outputService;
             Generator = generator;
         }
 
-        public void StartController()
+        public void RunController()
         {
             OutputService.ShowMessage("Input count of car in the autopark:");
             var carNumber = Convert.ToInt32(InputService.GetString());
@@ -32,18 +28,18 @@ namespace AutoPark.Controller
             Transport = Generator.GetMotoCars(carNumber);
             Transport.Zip(Generator.GetTruck(carNumber));
 
-            List<IService> services = new List<IService>
+            var controllers = new List<IContoller>
             {
-                new AutoparkInfoService(Transport, OutputService),
-                new CarInfoService(Transport, OutputService),
-                new LeasingService(Transport, OutputService)
+                new AutoparkInfoController(Transport, OutputService),
+                new CarInfoController(Transport, OutputService),
+                new LeasingController(Transport, OutputService)
             };
 
             try
             {
-                foreach (var service in services)
+                foreach (var controller in controllers)
                 {
-                    service.RunService();
+                    controller.RunController();
                 }
             }
             catch (Exception ex)

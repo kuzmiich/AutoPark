@@ -1,5 +1,5 @@
-﻿using AutoPark.FactoryMethod.Utils;
-using AutoPark.Models.Utils.Entity;
+﻿using AutoPark.Utils.Entity;
+using AutoPark.Utils.Enums;
 
 namespace AutoPark.FactorMethod.BaseCreator
 {

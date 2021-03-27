@@ -1,17 +1,17 @@
-﻿using AutoPark.Models.Utils.Entity;
+﻿using AutoPark.Utils.Engines.Base;
+using AutoPark.Utils.Entity;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutoPark.Models.Engine
+namespace AutoPark.Utils.Engines
 {
-    public class AutoParkEngine
+    public class AutoParkEngine : AbstractEngine
     {
-        public AutoParkEngine(List<Vehicle> transport)
+        public AutoParkEngine(List<Vehicle> transport) : base(transport)
         {
-            Transport = transport;
         }
 
-        public List<Vehicle> Transport { get; init; }
+        public override List<Vehicle> Transport { get; init; }
 
         public int GetMaxMileage()
         {

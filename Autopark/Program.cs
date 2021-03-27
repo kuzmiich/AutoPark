@@ -1,10 +1,8 @@
-﻿using AutoPark.Controller;
-using AutoPark.InputService;
-using AutoPark.InputService.ConsoleInput;
-using AutoPark.Models.Utils;
-using AutoPark.Models.Utils.Interfaces;
-using AutoPark.OutputService;
-using AutoPark.OutputService.ConsoleOutput;
+﻿using AutoPark.Controllers;
+using AutoPark.Utils.Utils.Interfaces;
+using AutoPark.Services;
+using AutoPark.Services.InputService.ConsoleInput;
+using AutoPark.Services.OutputService.ConsoleOutput;
 
 namespace AutoPark
 {
@@ -12,7 +10,7 @@ namespace AutoPark
     {
         private static readonly IInputService _consoleInput = ConsoleInput.GetInstance();
         private static readonly IOutputService _consoleOutput = ConsoleOutput.GetInstance();
-        private static readonly IGenerator _generator = Generator.GetInstance();
+        private static readonly IGeneratorService _generator = Generator.GetInstance();
 
         static void Main(string[] args)
         {
@@ -21,7 +19,7 @@ namespace AutoPark
                 _consoleOutput,
                 _generator
             );
-            controller.StartController();
+            controller.RunController();
         }
     }
 }

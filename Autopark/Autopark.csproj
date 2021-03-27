@@ -7,15 +7,12 @@
 
   <ItemGroup>
     <Compile Remove="FactoryMethod\interfaces\**" />
-    <Compile Remove="Utils\**" />
     <EmbeddedResource Remove="FactoryMethod\interfaces\**" />
-    <EmbeddedResource Remove="Utils\**" />
     <None Remove="FactoryMethod\interfaces\**" />
-    <None Remove="Utils\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Utils\Enums\" />
+    <Folder Include="UnitTests\" />
   </ItemGroup>
 
 </Project>

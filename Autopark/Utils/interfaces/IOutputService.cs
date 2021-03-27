@@ -1,4 +1,4 @@
-﻿namespace AutoPark.OutputService
+﻿namespace AutoPark.Utils.Utils.Interfaces
 {
     public interface IOutputService
     {

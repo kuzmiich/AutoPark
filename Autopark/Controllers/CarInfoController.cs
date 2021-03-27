@@ -1,22 +1,21 @@
-﻿using AutoPark.Models.Engine;
-using AutoPark.Models.Utils.Entity;
-using AutoPark.Models.Utils.Interfaces;
-using AutoPark.OutputService;
+﻿using AutoPark.Utils.Engines;
+using AutoPark.Utils.Entity;
+using AutoPark.Utils.Utils.Interfaces;
 using System.Collections.Generic;
 
-namespace AutoPark.Controller.Services
+namespace AutoPark.Controllers
 {
     /// <summary>
     /// Service 1 - Common information about Vehicles
     /// </summary>
-    class CarInfoService : IService
+    class CarInfoController : IContoller
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="transport"></param>
         /// <param name="consoleOutput"></param>
-        public CarInfoService(List<Vehicle> transport, IOutputService consoleOutput)
+        public CarInfoController(List<Vehicle> transport, IOutputService consoleOutput)
         {
             Transport = transport;
             ConsoleOutput = consoleOutput;
@@ -27,7 +26,7 @@ namespace AutoPark.Controller.Services
         public IOutputService ConsoleOutput { get; }
         private AutoParkEngine Engine { get; set; }
 
-        public void RunService()
+        public void RunController()
         {
             try
             {

@@ -1,4 +1,4 @@
-﻿namespace AutoPark.Models.Utils.Interfaces
+﻿namespace AutoPark.Utils.Utils.Interfaces
 {
     interface IMovable
     {

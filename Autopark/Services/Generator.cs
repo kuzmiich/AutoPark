@@ -2,15 +2,15 @@
 using AutoPark.FactorMethod.CreateArea.MotoCarCreators;
 using AutoPark.FactorMethod.CreateArea.TruckCreators;
 using AutoPark.FactoryMethod.CreateArea.MotoCarCreators;
-using AutoPark.FactoryMethod.Utils;
-using AutoPark.Models.Utils.Entity;
-using AutoPark.Models.Utils.Interfaces;
+using AutoPark.Utils.Entity;
+using AutoPark.Utils.Enums;
+using AutoPark.Utils.Utils.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace AutoPark.Models.Utils
+namespace AutoPark.Services
 {
-    public class Generator : IGenerator
+    public class Generator : IGeneratorService
     {
         #region Class Fields
         private readonly Random _random = new();
@@ -44,6 +44,8 @@ namespace AutoPark.Models.Utils
         {
         }
 
+        private static Creator Creator { get; set; }
+
         public static Generator GetInstance()
         {
             if (_instance == null)
@@ -65,15 +67,14 @@ namespace AutoPark.Models.Utils
 
             for (int i = 1; i < count + 1; i++)
             {
-                Creator creator = null;
                 decimal cost = _random.Next(30000, 200000);
                 int index = _random.Next(ProducerContries.Count);
                 int truckWeight = _random.Next(3000, 20000);
                 int mileage = _random.Next(0, 1000);
                 int totalFuelCapacity = _random.Next(50, 100);
 
-                creator = new ZilCreator(ProducerContries[index]);
-                var truck = creator.Create(i, Colors[index], truckWeight, cost, mileage, totalFuelCapacity);
+                Creator = new ZilCreator(ProducerContries[index]);
+                var truck = Creator.Create(i, Colors[index], truckWeight, cost, mileage, totalFuelCapacity);
                 transport.Add(truck);
             }
 
@@ -90,20 +91,20 @@ namespace AutoPark.Models.Utils
                 int truckWeight = _random.Next(3000, 20000);
                 int mileage = _random.Next(0, 1000);
                 int totalFuelCapacity = _random.Next(30, 50);
-                Creator creator;
+
                 decimal cost;
                 const int CountMotoCarCreator = 2;
                 if (_random.Next(CountMotoCarCreator) == 0)
                 {
                     cost = _random.Next(10000, 25000);
-                    creator = new LadaCreator(ProducerContries[index]);
+                    Creator = new LadaCreator(ProducerContries[index]);
                 }
                 else
                 {
                     cost = _random.Next(100000, 300000);
-                    creator = new LamborghiniCreator(ProducerContries[index]);
+                    Creator = new LamborghiniCreator(ProducerContries[index]);
                 }
-                var truck = creator.Create(i, Colors[index], truckWeight, cost, mileage, totalFuelCapacity);
+                var truck = Creator.Create(i, Colors[index], truckWeight, cost, mileage, totalFuelCapacity);
                 transport.Add(truck);
             }
 

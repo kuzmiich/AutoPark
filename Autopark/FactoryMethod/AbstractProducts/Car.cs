@@ -1,6 +1,6 @@
-﻿using AutoPark.FactoryMethod.Utils;
-using AutoPark.Models.Utils.Entity;
-using AutoPark.Models.Utils.Interfaces;
+﻿using AutoPark.Utils.Entity;
+using AutoPark.Utils.Enums;
+using AutoPark.Utils.Utils.Interfaces;
 
 namespace AutoPark.FactorMethod.AbstractProduct
 {

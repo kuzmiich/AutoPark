@@ -1,9 +1,9 @@
-﻿using AutoPark.Models.Utils.Entity;
+﻿using AutoPark.Utils.Entity;
 using System.Collections.Generic;
 
-namespace AutoPark.Models.Utils.Interfaces
+namespace AutoPark.Utils.Utils.Interfaces
 {
-    public interface IGenerator
+    public interface IGeneratorService
     {
         List<Vehicle> GetMotoCars(int count);
         List<Vehicle> GetTruck(int count);

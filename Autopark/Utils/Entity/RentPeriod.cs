@@ -1,4 +1,4 @@
-﻿namespace AutoPark.Models.Utils.Entity
+﻿namespace AutoPark.Utils.Entity
 {
     public class RentPeriod
     {
