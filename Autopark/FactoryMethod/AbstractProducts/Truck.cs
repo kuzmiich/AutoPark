@@ -1,12 +1,11 @@
-﻿using Autopark.Utils.Entity;
-using Autopark.Utils.Enums;
-using Autopark.Utils.Utils.Interfaces;
+﻿using Autopark.Model.Entity;
+using Autopark.Model.Enum;
 
 namespace Autopark.FactoryMethod.BaseProduct
 {
     public abstract class Truck : Vehicle, IMovable
     {
-        public const VehicleType Type = VehicleType.Truck;
+        private const VehicleType Type = VehicleType.MotorCar;
 
         public Truck()
         {
@@ -24,7 +23,6 @@ namespace Autopark.FactoryMethod.BaseProduct
 
         #region Class Property
 
-        public abstract string Brand { get; }
 
         #endregion
 

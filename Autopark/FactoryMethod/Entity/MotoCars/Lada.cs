@@ -1,9 +1,9 @@
-﻿using Autopark.FactorMethod.AbstractProduct;
-using Autopark.Utils.Entity;
-using Autopark.Utils.Enums;
+﻿using Autopark.FactoryMethod.AbstractProduct;
+using Autopark.Model.Entity;
+using Autopark.Model.Enum;
 using System;
 
-namespace Autopark.FactorMethod.Entity.MotoCar
+namespace Autopark.FactoryMethod.Entity.MotoCar
 {
     class Lada : Car
     {
@@ -27,7 +27,7 @@ namespace Autopark.FactorMethod.Entity.MotoCar
         }
         public override string ToString()
         {
-            return $"{base.ToString()}, Brand - {Brand}";
+            return $"{base.ToString()}, Type - {Brand}";
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Autopark.FactorMethod.AbstractProduct;
-using Autopark.Utils.Entity;
-using Autopark.Utils.Enums;
+﻿using Autopark.Model.Enum;
+using Autopark.FactoryMethod.AbstractProduct;
+using Autopark.Model.Entity;
 using System;
 
 namespace Autopark.FactoryMethod.Products.MotoCars

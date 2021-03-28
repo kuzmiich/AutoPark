@@ -1,10 +1,10 @@
-﻿using Autopark.FactorMethod.BaseCreator;
-using Autopark.FactorMethod.Entity.Trucks;
+﻿using Autopark.Model.Enum;
+using Autopark.FactoryMethod.BaseCreator;
+using Autopark.FactoryMethod.Entity.Trucks;
 using Autopark.FactoryMethod.BaseProduct;
-using Autopark.Utils.Entity;
-using Autopark.Utils.Enums;
+using Autopark.Model.Entity;
 
-namespace Autopark.FactorMethod.CreateArea.TruckCreators
+namespace Autopark.FactoryMethod.CreateArea.TruckCreators
 {
     class ZilCreator : Creator
     {

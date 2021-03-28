@@ -1,10 +1,10 @@
-﻿using Autopark.FactorMethod.AbstractProduct;
-using Autopark.FactorMethod.BaseCreator;
-using Autopark.FactorMethod.Entity.MotoCar;
-using Autopark.Utils.Entity;
-using Autopark.Utils.Enums;
+﻿using Autopark.FactoryMethod.AbstractProduct;
+using Autopark.FactoryMethod.BaseCreator;
+using Autopark.FactoryMethod.Entity.MotoCar;
+using Autopark.Model.Entity;
+using Autopark.Model.Enum;
 
-namespace Autopark.FactorMethod.CreateArea.MotoCarCreators
+namespace Autopark.FactoryMethod.CreateArea.MotoCarCreators
 {
     class LadaCreator : Creator
     {

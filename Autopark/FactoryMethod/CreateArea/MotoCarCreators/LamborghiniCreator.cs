@@ -1,8 +1,8 @@
-﻿using Autopark.FactorMethod.AbstractProduct;
-using Autopark.FactorMethod.BaseCreator;
+﻿using Autopark.Model.Enum;
+using Autopark.FactoryMethod.AbstractProduct;
+using Autopark.FactoryMethod.BaseCreator;
 using Autopark.FactoryMethod.Products.MotoCars;
-using Autopark.Utils.Entity;
-using Autopark.Utils.Enums;
+using Autopark.Model.Entity;
 
 namespace Autopark.FactoryMethod.CreateArea.MotoCarCreators
 {

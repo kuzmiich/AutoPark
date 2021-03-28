@@ -1,9 +1,9 @@
-﻿using Autopark.FactoryMethod.BaseProduct;
-using Autopark.Utils.Entity;
-using Autopark.Utils.Enums;
+﻿using Autopark.Model.Enum;
+using Autopark.FactoryMethod.BaseProduct;
+using Autopark.Model.Entity;
 using System;
 
-namespace Autopark.FactorMethod.Entity.Trucks
+namespace Autopark.FactoryMethod.Entity.Trucks
 {
     class Zil : Truck
     {
