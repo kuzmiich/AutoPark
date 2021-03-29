@@ -1,7 +1,8 @@
-﻿using Autopark.InputService;
-using Autopark.Model.Entity;
-using Autopark.Model.Services.Base;
-using Autopark.OutputService;
+﻿using Autopark.Controller.AutoparkController;
+using Autopark.Entity.Class;
+using Autopark.Model.Service;
+using Autopark.Model.Service.InputService;
+using Autopark.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace Autopark.Controller
     {
         public IInputService InputService { get; init; }
         public IOutputService OutputService { get; init; }
-        public IGeneratorService Generator { get; init; }
+        public IGenerationService Generator { get; init; }
         public List<Vehicle> Transport { get; set; }
 
-        public MainController(IInputService inputService, IOutputService outputService, IGeneratorService generator)
+        public MainController(IInputService inputService, IOutputService outputService, IGenerationService generator)
         {
             InputService = inputService;
             OutputService = outputService;
@@ -33,8 +34,9 @@ namespace Autopark.Controller
             var controllers = new List<IContoller>
             {
                 new AutoparkInfoController(Transport, OutputService),
-                new CarInfoController(Transport, OutputService),
-                new LeasingController(Transport, OutputService)
+                new VehicleInfoController(Transport, OutputService),
+                new LeasingController(Transport, OutputService),
+                new ParkingController(Transport, OutputService)
             };
 
             try

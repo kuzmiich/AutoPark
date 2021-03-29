@@ -1,8 +1,8 @@
-﻿using Autopark.Model.Enum;
+﻿using Autopark.Entity.Class;
+using Autopark.Entity.Enum;
 using Autopark.FactoryMethod.BaseCreator;
-using Autopark.FactoryMethod.Entity.Trucks;
 using Autopark.FactoryMethod.BaseProduct;
-using Autopark.Model.Entity;
+using Autopark.FactoryMethod.Entity.Trucks;
 
 namespace Autopark.FactoryMethod.CreateArea.TruckCreators
 {

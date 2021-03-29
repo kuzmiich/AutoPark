@@ -1,7 +1,6 @@
-﻿using Autopark.Model.Entity;
-using Autopark.Model.Enum;
+﻿using Autopark.Entity.Enum;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Autopark.Services.Model
 {
@@ -14,15 +13,15 @@ namespace Autopark.Services.Model
 
         }
 
-        public Validator TypeCharacter(VehicleType type)
+        public Validator TypeCharacter(VehicleType vehicleType)
         {
-            if (type == VehicleType.MotorCar)
+            var arrayVehicleType = Enum.GetValues(typeof(VehicleType)).Cast<VehicleType>();
+            foreach (var type in arrayVehicleType)
             {
-                _isValidate = true;
-            }
-            else if (type == VehicleType.Truck)
-            {
-                _isValidate = true;
+                if(vehicleType == type)
+                {
+                    _isValidate = true;
+                }
             }
             return this;
         }

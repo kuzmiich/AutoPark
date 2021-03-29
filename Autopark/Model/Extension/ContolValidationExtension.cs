@@ -1,5 +1,4 @@
-﻿using Autopark.Model.Entity;
-using Autopark.Model.Enum;
+﻿using Autopark.Entity.Class;
 using Autopark.Services.Model;
 using System.Collections.Generic;
 

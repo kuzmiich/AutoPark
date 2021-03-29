@@ -1,6 +1,6 @@
-﻿using Autopark.FactoryMethod.AbstractProduct;
-using Autopark.Model.Entity;
-using Autopark.Model.Enum;
+﻿using Autopark.Entity.Class;
+using Autopark.Entity.Enum;
+using Autopark.FactoryMethod.AbstractProduct;
 using System;
 
 namespace Autopark.FactoryMethod.Entity.MotoCar
@@ -11,7 +11,7 @@ namespace Autopark.FactoryMethod.Entity.MotoCar
         {
         }
 
-        public Lada(int id, RentPeriod rentPeriod, decimal rentCost) : base(id, rentPeriod)
+        public Lada(int id, RentPeriod rentPeriod) : base(id, rentPeriod)
         {
         }
 

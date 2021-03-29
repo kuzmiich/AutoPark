@@ -1,5 +1,5 @@
-﻿using Autopark.Model.Enum;
-using Autopark.Model.Entity;
+﻿using Autopark.Entity.Class;
+using Autopark.Entity.Enum;
 
 namespace Autopark.FactoryMethod.BaseCreator
 {

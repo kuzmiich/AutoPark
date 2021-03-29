@@ -1,6 +1,6 @@
-﻿using Autopark.Model.Enum;
+﻿using Autopark.Entity.Class;
+using Autopark.Entity.Enum;
 using Autopark.FactoryMethod.BaseProduct;
-using Autopark.Model.Entity;
 using System;
 
 namespace Autopark.FactoryMethod.Entity.Trucks
