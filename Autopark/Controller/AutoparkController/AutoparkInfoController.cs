@@ -14,34 +14,37 @@ namespace Autopark.Controller.AutoparkController
         public AutoparkInfoController(List<Vehicle> transport, IOutputService consoleOutput)
         {
             Transport = transport;
-            OutputService = consoleOutput;
+            ConsoleOutput = consoleOutput;
             Engine = new AutoparkInfoService(Transport);
         }
 
         public List<Vehicle> Transport { get; }
-        public IOutputService OutputService { get; }
+        public IOutputService ConsoleOutput { get; }
         private AutoparkInfoService Engine { get; set; }
 
         public void RunController()
         {
-            OutputService.ShowMessage($"Autopark cost - {Engine.AutoparkCost}");
-            OutputService.ShowMessage($"Autopark square - {Engine.AutoparkSquare}");
+            ConsoleOutput.ShowMessage($"Autopark cost - {AutoparkInfoService.autoparkCost}");
+            ConsoleOutput.ShowMessage($"Autopark square - {AutoparkInfoService.autoparkSquare}");
 
-            Engine.BuyVehicle(Transport, 2, VehicleType.Truck);
+            ConsoleOutput.ShowMessage($"Total vehicle cost - {Engine.TotalVehicleCost}");
+            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
-            Engine.SellVehicle(Transport, 2);
+            Engine.BuyVehicle(4, VehicleType.Truck);
+
+            Engine.SellVehicle(2);
 
             Engine.SortByCost();
-            OutputService.ShowMessage(string.Join('\n', Transport));
-            OutputService.ShowMessage(string.Empty.PadLeft(150, '-'));
+            ConsoleOutput.ShowMessage($"Sort by Cost: \n{string.Join('\n', Engine.Transport)}");
+            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
             Engine.SortById();
-            OutputService.ShowMessage(string.Join('\n', Transport));
-            OutputService.ShowMessage(string.Empty.PadLeft(150, '-'));
+            ConsoleOutput.ShowMessage($"Sort by id: \n{string.Join('\n', Engine.Transport)}");
+            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
             Engine.SortByTotalFuelCapacity();
-            OutputService.ShowMessage(string.Join('\n', Transport));
-            OutputService.ShowMessage(string.Empty.PadLeft(150, '-'));
+            ConsoleOutput.ShowMessage($"Sort by total fuel capacity: \n{string.Join('\n', Engine.Transport)}");
+            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
 }

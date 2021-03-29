@@ -1,6 +1,6 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
-using Autopark.FactoryMethod.BaseCreator;
+using Autopark.FactoryMethod.AbstractCreator;
 using Autopark.FactoryMethod.CreateArea.MotoCarCreators;
 using Autopark.FactoryMethod.CreateArea.TruckCreators;
 using Autopark.Model.Service;
@@ -49,9 +49,9 @@ namespace Autopark.Model.Service.GenerationService
         {
             int index = _random.Next(ProducerContries.Count);
             decimal cost = _random.Next(30000, 200000);
-            int truckWeight = _random.Next(3000, 20000);
-            int mileage = _random.Next(0, 1000);
-            int totalFuelCapacity = _random.Next(50, 100);
+            int truckWeight = _random.Next(5000, 50000);
+            int mileage = _random.Next(0, 100000);
+            int totalFuelCapacity = _random.Next(50, 150);
             RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
             Manager = new ZilCreator(ProducerContries[index]);
 
@@ -63,10 +63,9 @@ namespace Autopark.Model.Service.GenerationService
         {
             var index = _random.Next(ProducerContries.Count);
             RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
-
-            int truckWeight = _random.Next(3000, 20000);
-            int mileage = _random.Next(0, 1000);
-            int totalFuelCapacity = _random.Next(30, 50);
+            int motoCarWeight = _random.Next(3000, 20000);
+            int mileage = _random.Next(0, 50000);
+            int totalFuelCapacity = _random.Next(30, 60);
 
             decimal cost = default;
             if (_random.Next(CountMotoCarCreator) == 0)
@@ -80,7 +79,7 @@ namespace Autopark.Model.Service.GenerationService
                 Manager = new LamborghiniCreator(ProducerContries[index]);
             }
 
-            return Manager.Create(id, Colors[index], rentPeriod, truckWeight, cost, mileage, totalFuelCapacity);
+            return Manager.Create(id, Colors[index], rentPeriod, motoCarWeight, cost, mileage, totalFuelCapacity);
         }
 
         public List<Vehicle> GetMotoCars(int count)

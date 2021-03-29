@@ -27,7 +27,7 @@ namespace Autopark.FactoryMethod.Entity.MotoCar
         }
         public override string ToString()
         {
-            return $"{base.ToString()}, Type - {Brand}";
+            return $"{base.ToString()}, Brand - {Brand}";
         }
     }
 }

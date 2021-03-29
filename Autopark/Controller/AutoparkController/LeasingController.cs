@@ -34,6 +34,8 @@ namespace Autopark.Controller.AutoparkController
 
             ConsoleOutput.ShowMessage($"Cost rent a {Transport[9].Brand} -" +
                 $" {Engine.RentVehicle(new RentPeriod(12, 1), 9)}");
+
+            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
 }

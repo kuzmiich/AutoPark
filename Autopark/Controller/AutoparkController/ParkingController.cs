@@ -25,6 +25,8 @@ namespace Autopark.Controller.AutoparkController
             ConsoleOutput.ShowMessage($"Сost of parking space - {Engine.ParkVehicle(new RentPeriod(5))}");
 
             ConsoleOutput.ShowMessage($"Сost of parking space - {Engine.ParkVehicle(new RentPeriod(20))}");
+
+            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
 }

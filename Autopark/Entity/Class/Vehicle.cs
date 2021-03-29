@@ -56,8 +56,8 @@ namespace Autopark.Entity.Class
 
         public override string ToString()
         {
-            return $"Id - {Id}, Color - {Color}, Weight - {Weight}, Cost - {Cost}, Mileage - {Mileage}," +
-                 $"Total fuel capacity - {TotalFuelCapacity}, Brand - {Brand}";
+            return $"Id - {Id}, Color - {Color}, Rent period hour number - {RentPeriod.HoutNumber}, Rent period day number - {RentPeriod.DayNumber}," +
+                $" Cost - {Cost}, Weight - {Weight}, Mileage - {Mileage}, Total fuel capacity - {TotalFuelCapacity}";
         }
     }
 }

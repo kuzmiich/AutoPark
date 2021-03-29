@@ -18,23 +18,23 @@ namespace Autopark.Controller.AutoparkController
         public VehicleInfoController(List<Vehicle> transport, IOutputService consoleOutput)
         {
             Transport = transport;
-            OutputService = consoleOutput;
+            ConsoleOutput = consoleOutput;
             Engine = new VehicleInfoService(Transport);
         }
 
         public List<Vehicle> Transport { get; }
-        public IOutputService OutputService { get; }
+        public IOutputService ConsoleOutput { get; }
         private VehicleInfoService Engine { get; set; }
 
         public void RunController()
         {
-            OutputService.ShowMessage($"Max mileage = {Engine.MaxMileage}");
-            OutputService.ShowMessage($"Min mileage = {Engine.MinMileage}");
-            OutputService.ShowMessage($"Total mileage = {Engine.TotalMileage}");
-            OutputService.ShowMessage($"Total fuel capacity = {Engine.TotalFuelCapacity}");
-            OutputService.ShowMessage($"Total weight = {Engine.TotalWeight}");
+            ConsoleOutput.ShowMessage($"Max mileage = {Engine.MaxMileage}");
+            ConsoleOutput.ShowMessage($"Min mileage = {Engine.MinMileage}");
+            ConsoleOutput.ShowMessage($"Total mileage = {Engine.TotalMileage}");
+            ConsoleOutput.ShowMessage($"Total fuel capacity = {Engine.TotalFuelCapacity}");
+            ConsoleOutput.ShowMessage($"Total weight = {Engine.TotalWeight}");
 
-            OutputService.ShowMessage(string.Empty.PadLeft(150, '-'));
+            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
 }

@@ -28,8 +28,7 @@ namespace Autopark.FactoryMethod.BaseProduct
 
         public override string ToString()
         {
-            return $"Id - {Id}, Color - {Color} Weight - {Weight}, Cost - {Cost}, Mileage - {Mileage}," +
-                $"Total fuel capacity - {TotalFuelCapacity}, Type - {Type}";
+            return $"{base.ToString()}, {Type}";
         }
 
         public abstract void Move();

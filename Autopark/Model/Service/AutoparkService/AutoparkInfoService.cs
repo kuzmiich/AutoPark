@@ -2,6 +2,7 @@
 using Autopark.Entity.Enum;
 using Autopark.Model.Extension;
 using Autopark.Model.Service.GenerationService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,30 +10,14 @@ namespace Autopark.Model.Service.AutoperkService
 {
     public class AutoparkInfoService : AbstractService
     {
-        public float AutoparkSquare = 3350.50f;
-        public decimal AutoparkCost = 30_000_000_000m;
-        private readonly decimal AutoparkBank;
+        private const int coefAutoparkCost = 5000;
+        public static float autoparkSquare = 3350.50f;
+        public static decimal autoparkCost = Convert.ToDecimal(autoparkSquare * coefAutoparkCost);
 
         private VehicleGeneration _generator;
 
         public AutoparkInfoService(List<Vehicle> transport) : base(transport)
         {
-            _generator = new VehicleGeneration();
-        }
-
-        public AutoparkInfoService(decimal autoparkBank, List<Vehicle> transport) : base(transport)
-        {
-            AutoparkBank = autoparkBank;
-            Transport = transport;
-            _generator = new VehicleGeneration();
-        }
-
-        public AutoparkInfoService(float autoparkSquare, decimal autoparkCost, decimal autoparkBank, List<Vehicle> transport) : base(transport)
-        {
-            AutoparkSquare = autoparkSquare;
-            AutoparkCost = autoparkCost;
-            AutoparkBank = autoparkBank;
-            Transport = transport;
             _generator = new VehicleGeneration();
         }
 
@@ -45,15 +30,12 @@ namespace Autopark.Model.Service.AutoperkService
         /// <param name="count">Number of Vehicles</param>
         /// <param name="type">Transport type</param>
         /// <returns>Some number random vehicle</returns>
-        public List<Vehicle> BuyVehicle(List<Vehicle> vehicles, int count, VehicleType type)
+        public void BuyVehicle(int count, VehicleType type)
         {
-            for (int i = 1; i < count + 1; i++)
+            for (int i = 0; i < count; i++)
             {
-                vehicles.Rules().TypeCharacter(type).Validate();
-                vehicles.Add(_generator.GetMotoCar(vehicles.Count + i));
+                BuyVehicle(type);
             }
-
-            return vehicles;
         }
         /// <summary>
         /// Buy only one vehicle
@@ -61,38 +43,34 @@ namespace Autopark.Model.Service.AutoperkService
         /// <param name="vehicles">List Vehicles</param>
         /// <param name="type">Transport type</param>
         /// <returns>One random vehicle</returns>
-        public List<Vehicle> BuyVehicle(List<Vehicle> vehicles, VehicleType type)
+        public void BuyVehicle(VehicleType type)
         {
-            vehicles.Rules()
+            Transport.Rules()
                 .TypeCharacter(type)
                 .Validate();
 
-            vehicles.Add(_generator.GetMotoCar(vehicles.Count + 1));
-
-            return vehicles;
+            Transport.Add(_generator.GetMotoCar(Transport.Count + 1));
         }
 
-        public decimal SellVehicle(List<Vehicle> vehicles, int count)
+        public decimal SellVehicle(int count)
         {
             decimal totalCost = 0;
             for (int i = 0; i < count; i++)
             {
-                int lastVehicleIndex = vehicles.Count - 1;
-                totalCost += vehicles[lastVehicleIndex].Cost;
-                vehicles.RemoveAt(vehicles.Count - 1);
+                totalCost += SellVehicle();
             }
             return totalCost;
         }
-        public decimal SellVehicle(List<Vehicle> vehicles)
+        public decimal SellVehicle()
         {
-            int lastVehicleIndex = vehicles.Count - 1;
-            decimal totalCost = vehicles[lastVehicleIndex].Cost;
-            vehicles.RemoveAt(vehicles.Count - 1);
+            int lastVehicleIndex = Transport.Count - 1;
+            decimal totalCost = Transport[lastVehicleIndex].Cost;
+            Transport.RemoveAt(Transport.Count - 1);
 
             return totalCost;
         }
 
-        public decimal TotalVehicleCost() => Transport.Sum(x => x.Cost);
+        public decimal TotalVehicleCost => Transport.Sum(x => x.Cost);
 
         public void SortByCost() => Transport.OrderBy(x => x.Cost);
 

@@ -8,7 +8,7 @@ namespace Autopark.FactoryMethod.AbstractProduct
     /// </summary>
     public abstract class Car : Vehicle, IMovable
     {
-        private const VehicleType Type = VehicleType.MotorCar;
+        public const VehicleType Type = VehicleType.MotorCar;
         /// <summary>
         /// 
         /// </summary>
@@ -53,8 +53,7 @@ namespace Autopark.FactoryMethod.AbstractProduct
 
         public override string ToString()
         {
-            return $"Id - {Id}, Color - {Color} Weight - {Weight}, Rent period hour- {RentPeriod.HourCount}," +
-                $" Rent period Week - {RentPeriod.WeekCount} Cost - {Cost}, Mileage - {Mileage}, Total fuel capacity - {TotalFuelCapacity}, Type - {Type}";
+            return $"{base.ToString()}, {Type}";
         }
 
         public abstract void Move();

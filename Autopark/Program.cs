@@ -5,6 +5,7 @@ using Autopark.Model.Service.InputService;
 using Autopark.Model.Service.InputService.ConsoleInput;
 using Autopark.View;
 using Autopark.View.ConsoleOutput;
+using System;
 
 namespace Autopark
 {
@@ -21,7 +22,14 @@ namespace Autopark
                 _consoleOutput,
                 _generator
             );
-            controller.RunController();
+            try
+            {
+                controller.RunController();
+            }
+            catch (Exception ex)
+            {
+                _consoleOutput.ShowMessage(ex.Message);
+            }
         }
 
     }

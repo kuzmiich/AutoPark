@@ -1,6 +1,6 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
-using Autopark.FactoryMethod.BaseCreator;
+using Autopark.FactoryMethod.AbstractCreator;
 using Autopark.FactoryMethod.BaseProduct;
 using Autopark.FactoryMethod.Entity.Trucks;
 

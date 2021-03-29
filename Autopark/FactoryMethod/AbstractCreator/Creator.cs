@@ -1,7 +1,7 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
 
-namespace Autopark.FactoryMethod.BaseCreator
+namespace Autopark.FactoryMethod.AbstractCreator
 {
     /// <summary>
     /// Base class for create transport

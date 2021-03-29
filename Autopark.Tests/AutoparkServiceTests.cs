@@ -15,7 +15,7 @@ namespace Autopark.Tests
 			AutoparkInfoService service = new(generator.GetMotoCars(5));
 
 			// act
-			var res = service.TotalVehicleCost();
+			var res = service.TotalVehicleCost;
 
 			// assert
 			Assert.AreEqual(1000, res);

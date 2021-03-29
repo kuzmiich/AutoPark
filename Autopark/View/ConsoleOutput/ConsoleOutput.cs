@@ -24,7 +24,6 @@ namespace Autopark.View.ConsoleOutput
 
         private ConsoleOutput()
         {
-
         }
 
         public void ShowMessage(string msg)

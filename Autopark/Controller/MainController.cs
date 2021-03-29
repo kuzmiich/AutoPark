@@ -25,11 +25,18 @@ namespace Autopark.Controller
 
         public void RunController()
         {
-            OutputService.ShowMessage("Input count of car in the autopark:");
-            var carNumber = Convert.ToInt32(InputService.GetString());
-
-            Transport = Generator.GetMotoCars(carNumber);
-            Transport.Zip(Generator.GetTrucks(carNumber));
+            OutputService.ShowMessage("Input count of car in the autopark:"); 
+            var vehicleNumber = 0;
+            try
+            {
+                vehicleNumber = Convert.ToInt32(InputService.GetString());
+            }
+            catch
+            {
+                throw new ArgumentException("Error, input number.");
+            }
+            Transport = Generator.GetMotoCars(vehicleNumber);
+            Transport.Zip(Generator.GetTrucks(vehicleNumber));
 
             var controllers = new List<IContoller>
             {
