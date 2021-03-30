@@ -72,12 +72,12 @@ namespace Autopark.Model.Service.AutoperkService
 
         public decimal TotalVehicleCost => Transport.Sum(x => x.Cost);
 
-        public void SortByCost() => Transport.OrderBy(x => x.Cost);
+        public IOrderedEnumerable<Vehicle> SortByCost() => Transport.OrderBy(x => x.Cost);
 
-        public void SortByWeight() => Transport.OrderBy(x => x.Weight);
+        public IOrderedEnumerable<Vehicle> SortByWeight() => Transport.OrderBy(x => x.Weight);
 
-        public void SortById() => Transport.OrderBy(x => x.Id);
+        public IOrderedEnumerable<Vehicle> SortById() => Transport.OrderBy(x => x.Id);
 
-        public void SortByTotalFuelCapacity() => Transport.OrderBy(x => x.TotalFuelCapacity);
+        public IOrderedEnumerable<Vehicle> SortByTotalFuelCapacity() => Transport.OrderBy(x => x.TotalFuelCapacity);
     }
 }

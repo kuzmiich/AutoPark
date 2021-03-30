@@ -22,9 +22,13 @@ namespace Autopark.Controller.AutoparkController
 
         public void RunController()
         {
-            ConsoleOutput.ShowMessage($"Сost of parking space - {Engine.ParkVehicle(new RentPeriod(5))}");
+            short hourNumber1 = 5;
+            ConsoleOutput.ShowMessage($"Сost of parking space, rent period {hourNumber1} hours -" +
+                $" {Engine.ParkVehicle(new RentPeriod(hourNumber1))}");
 
-            ConsoleOutput.ShowMessage($"Сost of parking space - {Engine.ParkVehicle(new RentPeriod(20))}");
+            short hourNumber2 = 20;
+            ConsoleOutput.ShowMessage($"Сost of parking space, rent period {hourNumber2} hours -" +
+                $" {Engine.ParkVehicle(new RentPeriod(hourNumber2))}");
 
             ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }

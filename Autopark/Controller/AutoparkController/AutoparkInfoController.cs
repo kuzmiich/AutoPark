@@ -31,19 +31,19 @@ namespace Autopark.Controller.AutoparkController
             ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
             Engine.BuyVehicle(4, VehicleType.Truck);
+            ConsoleOutput.ShowMessage($"Buy 4 vehicle. Vehicle number - {Transport.Count}");
 
             Engine.SellVehicle(2);
+            ConsoleOutput.ShowMessage($"Sell 2 vehicle. Vehicle number - {Transport.Count}");
 
-            Engine.SortByCost();
-            ConsoleOutput.ShowMessage($"Sort by Cost: \n{string.Join('\n', Engine.Transport)}");
+            ConsoleOutput.ShowMessage($"Sort by Cost: \n{string.Join('\n', Engine.SortByCost())}");
             ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
-            Engine.SortById();
-            ConsoleOutput.ShowMessage($"Sort by id: \n{string.Join('\n', Engine.Transport)}");
+            ConsoleOutput.ShowMessage($"Sort by id: \n{string.Join('\n', Engine.SortById())}");
             ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
             Engine.SortByTotalFuelCapacity();
-            ConsoleOutput.ShowMessage($"Sort by total fuel capacity: \n{string.Join('\n', Engine.Transport)}");
+            ConsoleOutput.ShowMessage($"Sort by total fuel capacity: \n{string.Join('\n', Engine.SortByTotalFuelCapacity())}");
             ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
