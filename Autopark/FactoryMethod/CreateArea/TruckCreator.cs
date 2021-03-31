@@ -1,9 +1,9 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
 using Autopark.FactoryMethod.AbstractCreator;
-using Autopark.FactoryMethod.BaseProduct;
+using Autopark.FactoryMethod.AbstractProduct;
 
-namespace Autopark.FactoryMethod.CreateArea.TruckCreators
+namespace Autopark.FactoryMethod.CreateArea
 {
     class TruckCreator : Creator
     {
@@ -19,10 +19,11 @@ namespace Autopark.FactoryMethod.CreateArea.TruckCreators
             long weight,
             decimal cost,
             int mileage,
-            int totalFuelCapacity
+            int totalFuelCapacity,
+            string brand
             )
         {
-            return new Truck(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity);
+            return new Truck(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity, brand);
         }
     }
 }

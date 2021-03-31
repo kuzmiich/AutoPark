@@ -48,7 +48,7 @@ namespace Autopark.Model.Service.AutoperkService
                 .TypeCharacter(type)
                 .Validate();
 
-            transport.Add(_generator.GetMotoCar(transport.Count + 1));
+            transport.Add(_generator.GetCar(transport.Count + 1));
         }
 
         /// <summary>

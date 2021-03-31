@@ -5,7 +5,7 @@ namespace Autopark.Model.Service
 {
     public interface IGenerationService
     {
-        List<Vehicle> GetMotoCars(int count);
+        List<Vehicle> GetCars(int count);
         List<Vehicle> GetTrucks(int count);
     }
 }

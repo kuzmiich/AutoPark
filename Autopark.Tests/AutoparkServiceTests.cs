@@ -17,7 +17,7 @@ namespace Autopark.Tests
 			var service = new AutoparkInfoService();
 			List<Vehicle> _transport = null;
 			// act
-			service.BuyVehicle(_transport, 2, VehicleType.MotorCar);
+			service.BuyVehicle(_transport, 2, VehicleType.Car);
 			List<Vehicle> res = null;
 
 			// assert

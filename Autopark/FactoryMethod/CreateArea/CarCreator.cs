@@ -3,11 +3,11 @@ using Autopark.Entity.Enum;
 using Autopark.FactoryMethod.AbstractCreator;
 using Autopark.FactoryMethod.AbstractProduct;
 
-namespace Autopark.FactoryMethod.CreateArea.MotoCarCreators
+namespace Autopark.FactoryMethod.CreateArea
 {
-    class MotoCarCreator : Creator
+    class CarCreator : Creator
     {
-        public MotoCarCreator(string producerCountry) : base(producerCountry)
+        public CarCreator(string producerCountry) : base(producerCountry)
         {
         }
 
@@ -19,10 +19,11 @@ namespace Autopark.FactoryMethod.CreateArea.MotoCarCreators
             long weight,
             decimal cost,
             int mileage,
-            int totalFuelCapacity
+            int totalFuelCapacity,
+            string brand
             )
         {
-            return new Car(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity);
+            return new Car(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity, brand);
         }
     }
 }

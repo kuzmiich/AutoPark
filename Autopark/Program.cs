@@ -1,5 +1,6 @@
 ﻿using Autopark.Controller;
 using Autopark.Controller.AutoparkController;
+using Autopark.Entity.Class;
 using Autopark.InputService;
 using Autopark.Model.Service;
 using Autopark.Model.Service.GenerationService;
@@ -31,15 +32,15 @@ namespace Autopark
             {
                 throw new ArgumentException("Error, input number.");
             }
-            var listVehicle = _generator.GetMotoCars(vehicleNumber);
-            listVehicle.Zip(_generator.GetTrucks(vehicleNumber));
+
+            List<Vehicle> listMotoCarsAndTrucks = _generator.GetCars(vehicleNumber).Union(_generator.GetTrucks(vehicleNumber)).ToList();
 
             var controllers = new List<IContoller>
             {
-                new AutoparkInfoController(listVehicle, _consoleOutput),
-                new VehicleInfoController(listVehicle, _consoleOutput),
-                new LeasingController(listVehicle, _consoleOutput),
-                new ParkingController(listVehicle, _consoleOutput)
+                new AutoparkInfoController(listMotoCarsAndTrucks, _consoleOutput),
+                new VehicleInfoController(listMotoCarsAndTrucks, _consoleOutput),
+                new LeasingController(listMotoCarsAndTrucks, _consoleOutput),
+                new ParkingController(listMotoCarsAndTrucks, _consoleOutput)
             };
 
             try

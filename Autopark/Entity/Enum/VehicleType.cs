@@ -2,7 +2,7 @@
 {
     public enum VehicleType 
     { 
-        MotorCar, 
+        Car, 
         Truck, 
         Plane,
         Train,

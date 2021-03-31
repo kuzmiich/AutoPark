@@ -1,33 +1,38 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
 
-namespace Autopark.FactoryMethod.BaseProduct
+namespace Autopark.FactoryMethod.AbstractProduct
 {
     public class Truck : Vehicle
     {
-        public const VehicleType Type = VehicleType.MotorCar;
-
-        public Truck(int id, ColorType color, RentPeriod rentPeriod, decimal cost, long weight, int mileage, int totalFuelCapacity) : base(id, color, rentPeriod, cost, weight, mileage, totalFuelCapacity)
-        {
-        }
+        public const VehicleType Type = VehicleType.Car;
 
         public Truck()
         {
         }
 
-        #region Class Property
+        public Truck(int id,
+            ColorType color,
+            RentPeriod rentPeriod,
+            decimal cost,
+            long weight,
+            int mileage,
+            int totalFuelCapacity,
+            string brand) 
+            : base(id, color, rentPeriod, cost, weight, mileage, totalFuelCapacity, brand)
+        {
+        }
 
-
-        #endregion
+        public override string Brand { get; init; }
 
         public override string ToString()
         {
-            return $"{base.ToString()}, {Type}";
+            return $"{base.ToString()}, Type - {Type}, Brand - {Brand}";
         }
 
-        public void Move()
+        public override string Move()
         {
-
+            return $"{Brand} move...";
         }
     }
 }

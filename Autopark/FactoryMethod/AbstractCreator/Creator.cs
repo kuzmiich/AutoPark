@@ -37,6 +37,7 @@ namespace Autopark.FactoryMethod.AbstractCreator
             long weight,
             decimal cost,
             int mileage,
-            int totalFuelCapacity);
+            int totalFuelCapacity,
+            string brand);
     }
 }

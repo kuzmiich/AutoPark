@@ -1,5 +1,4 @@
 ﻿using Autopark.Entity.Class;
-using Autopark.Entity.Const;
 using Autopark.Entity.Enum;
 
 namespace Autopark.FactoryMethod.AbstractProduct
@@ -9,29 +8,34 @@ namespace Autopark.FactoryMethod.AbstractProduct
     /// </summary>
     public class Car : Vehicle
     {
-        public const VehicleType Type = VehicleType.MotorCar;
-        private string _brand;
+        public const VehicleType Type = VehicleType.Car;
 
         public Car()
         {
         }
 
-        public Car(int id, ColorType color, RentPeriod rentPeriod, decimal cost, long weight, int mileage, int totalFuelCapacity) : base(id, color, rentPeriod, cost, weight, mileage, totalFuelCapacity)
+        public Car(int id,
+            ColorType color,
+            RentPeriod rentPeriod,
+            decimal cost,
+            long weight,
+            int mileage,
+            int totalFuelCapacity,
+            string brand) 
+            : base(id, color, rentPeriod, cost, weight, mileage, totalFuelCapacity, brand)
         {
         }
 
-        #region Class Property
-
-        #endregion
+        public override string Brand { get; init; }
 
         public override string ToString()
         {
-            return $"{base.ToString()}, {Type}, {Brand}";
+            return $"{base.ToString()}, Type - {Type}, Brand - {Brand}";
         }
 
-        public void Move()
+        public override string Move()
         {
-
+            return $"{Brand} move...";
         }
     }
 }

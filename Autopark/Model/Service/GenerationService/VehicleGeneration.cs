@@ -1,9 +1,8 @@
 ﻿using Autopark.Entity.Class;
+using Autopark.Entity.Const;
 using Autopark.Entity.Enum;
 using Autopark.FactoryMethod.AbstractCreator;
-using Autopark.FactoryMethod.CreateArea.MotoCarCreators;
-using Autopark.FactoryMethod.CreateArea.TruckCreators;
-using Autopark.Model.Service;
+using Autopark.FactoryMethod.CreateArea;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +13,7 @@ namespace Autopark.Model.Service.GenerationService
         #region Class Fields
         private readonly Random _random = new();
 
-        private const int CountMotoCarCreator = 2;
+        private const int CountCarCreator = 2;
 
         private static readonly List<string> ProducerContries = new()
         {
@@ -47,27 +46,32 @@ namespace Autopark.Model.Service.GenerationService
 
         public Vehicle GetTruck(int id)
         {
-            int index = _random.Next(ProducerContries.Count);
+            int produceContriesIndex = _random.Next(ProducerContries.Count);
+            int colorIndex = _random.Next(Colors.Count);
+            int brandIndex = _random.Next(VehicleBrand.TruckBrand.Count);
             decimal cost = _random.Next(30000, 200000);
             int truckWeight = _random.Next(5000, 50000);
             int mileage = _random.Next(0, 100000);
             int totalFuelCapacity = _random.Next(50, 150);
             RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
-            _manager = new TruckCreator(ProducerContries[index]);
+            _manager = new TruckCreator(ProducerContries[produceContriesIndex]);
 
-            return _manager.Create(id, Colors[index], rentPeriod, truckWeight, cost, mileage, totalFuelCapacity);
+            return _manager.Create(id, Colors[colorIndex], rentPeriod, truckWeight, cost, mileage, totalFuelCapacity, VehicleBrand.TruckBrand[brandIndex]);
         }
 
         
-        public Vehicle GetMotoCar(int id)
+        public Vehicle GetCar(int id)
         {
             RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
             int motoCarWeight = _random.Next(3000, 20000);
             int mileage = _random.Next(0, 50000);
             int totalFuelCapacity = _random.Next(30, 60);
-            decimal cost = default;
+            int produceContrieIndex = _random.Next(ProducerContries.Count);
+            int colorIndex = _random.Next(Colors.Count);
+            int brandIndex = _random.Next(VehicleBrand.TruckBrand.Count);
 
-            if (_random.Next(CountMotoCarCreator) == 0)
+            decimal cost = 0;
+            if (_random.Next(CountCarCreator) == 0)
             {
                 cost = _random.Next(10000, 25000);
             }
@@ -76,17 +80,16 @@ namespace Autopark.Model.Service.GenerationService
                 cost = _random.Next(100000, 300000);
             }
 
-            var index = _random.Next(ProducerContries.Count);
-            _manager = new MotoCarCreator(ProducerContries[index]);
-            return _manager.Create(id, Colors[index], rentPeriod, motoCarWeight, cost, mileage, totalFuelCapacity);
+            _manager = new CarCreator(ProducerContries[produceContrieIndex]);
+            return _manager.Create(id, Colors[colorIndex], rentPeriod, motoCarWeight, cost, mileage, totalFuelCapacity, VehicleBrand.CarBrand[brandIndex]);
         }
 
-        public List<Vehicle> GetMotoCars(int count)
+        public List<Vehicle> GetCars(int count)
         {
             List<Vehicle> transport = new();
             for (int i = 1; i < count + 1; i++)
             {
-                transport.Add(GetMotoCar(i));
+                transport.Add(GetCar(i));
             }
 
             return transport;

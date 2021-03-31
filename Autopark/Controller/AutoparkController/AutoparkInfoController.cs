@@ -30,10 +30,10 @@ namespace Autopark.Controller.AutoparkController
             _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
             _autoparkInfoService.BuyVehicle(_transport, 4, VehicleType.Truck);
-            _consoleOutput.ShowMessage($"Buy 4 vehicle. Vehicle number - {_transport.Count}");
+            _consoleOutput.ShowMessage($"Buy 4 vehicle. Vehicle count - {_transport.Count}");
 
             AutoparkInfoService.SellVehicle(_transport, 2);
-            _consoleOutput.ShowMessage($"Sell 2 vehicle. Vehicle number - {_transport.Count}");
+            _consoleOutput.ShowMessage($"Sell 2 vehicle. Vehicle count - {_transport.Count}");
 
             _consoleOutput.ShowMessage($"Sort by Cost: \n{string.Join('\n', AutoparkInfoService.SortByCost(_transport))}");
             _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
