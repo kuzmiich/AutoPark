@@ -1,20 +1,19 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
-using Autopark.FactoryMethod.AbstractProduct;
 using Autopark.FactoryMethod.AbstractCreator;
-using Autopark.FactoryMethod.Entity.MotoCar;
+using Autopark.FactoryMethod.AbstractProduct;
 
 namespace Autopark.FactoryMethod.CreateArea.MotoCarCreators
 {
-    class LadaCreator : Creator
+    class MotoCarCreator : Creator
     {
-        public LadaCreator(string producerCountry) : base(producerCountry)
+        public MotoCarCreator(string producerCountry) : base(producerCountry)
         {
         }
 
         public override string ProducerCountry { get; set; }
 
-        public override Car Create(int id,
+        public override Vehicle Create(int id,
             ColorType colorType,
             RentPeriod rentPeriod,
             long weight,
@@ -23,7 +22,7 @@ namespace Autopark.FactoryMethod.CreateArea.MotoCarCreators
             int totalFuelCapacity
             )
         {
-            return new Lada(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity);
+            return new Car(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity);
         }
     }
 }

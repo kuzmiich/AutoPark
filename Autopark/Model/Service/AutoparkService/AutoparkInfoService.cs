@@ -10,11 +10,11 @@ namespace Autopark.Model.Service.AutoperkService
 {
     public class AutoparkInfoService : IService
     {
-        private const int coefAutoparkCost = 5000;
-        public static float autoparkSquare = 3350.50f;
-        public static decimal autoparkCost = Convert.ToDecimal(autoparkSquare * coefAutoparkCost);
+        private const decimal coefAutoparkCost = 5000m;
+        public static decimal autoparkSquare = 3350.5m;
+        public static decimal autoparkCost = autoparkSquare * coefAutoparkCost;
 
-        private VehicleGeneration _generator;
+        private readonly VehicleGeneration _generator;
 
         public AutoparkInfoService()
         {
@@ -51,7 +51,13 @@ namespace Autopark.Model.Service.AutoperkService
             transport.Add(_generator.GetMotoCar(transport.Count + 1));
         }
 
-        public decimal SellVehicle(List<Vehicle> transport, int count)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="transport"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static decimal SellVehicle(List<Vehicle> transport, int count)
         {
             decimal totalCost = 0;
             for (int i = 0; i < count; i++)
@@ -61,7 +67,12 @@ namespace Autopark.Model.Service.AutoperkService
             return totalCost;
         }
 
-        public decimal SellVehicle(List<Vehicle> transport)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="transport"></param>
+        /// <returns></returns>
+        public static decimal SellVehicle(List<Vehicle> transport)
         {
             int lastVehicleIndex = transport.Count - 1;
             decimal totalCost = transport[lastVehicleIndex].Cost;
@@ -70,27 +81,27 @@ namespace Autopark.Model.Service.AutoperkService
             return totalCost;
         }
 
-        public decimal TotalVehicleCost(List<Vehicle> transport)
+        public static decimal TotalVehicleCost(List<Vehicle> transport)
         {
             return transport.Sum(x => x.Cost);
         }
 
-        public IOrderedEnumerable<Vehicle> SortByCost(List<Vehicle> transport)
+        public static IOrderedEnumerable<Vehicle> SortByCost(List<Vehicle> transport)
         {
             return transport.OrderBy(x => x.Cost);
         }
 
-        public IOrderedEnumerable<Vehicle> SortByWeight(List<Vehicle> transport)
+        public static IOrderedEnumerable<Vehicle> SortByWeight(List<Vehicle> transport)
         {
             return transport.OrderBy(x => x.Weight);
         }
 
-        public IOrderedEnumerable<Vehicle> SortById(List<Vehicle> transport)
+        public static IOrderedEnumerable<Vehicle> SortById(List<Vehicle> transport)
         {
             return transport.OrderBy(x => x.Id);
         }
 
-        public IOrderedEnumerable<Vehicle> SortByTotalFuelCapacity(List<Vehicle> transport)
+        public static IOrderedEnumerable<Vehicle> SortByTotalFuelCapacity(List<Vehicle> transport)
         {
             return transport.OrderBy(x => x.TotalFuelCapacity);
         }

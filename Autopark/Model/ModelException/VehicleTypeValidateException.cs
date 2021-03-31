@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Autopark.Services.Model
+namespace Autopark.Services.Model.ModelException
 {
     [Serializable]
     internal class VehicleTypeValidateException : Exception

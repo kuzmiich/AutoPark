@@ -1,8 +1,9 @@
 ﻿using Autopark.Entity.Enum;
+using Autopark.Services.Model.ModelException;
 using System;
 using System.Linq;
 
-namespace Autopark.Services.Model
+namespace Autopark.Services.Model.Extension.DataAnnotation
 {
     class Validator
     {

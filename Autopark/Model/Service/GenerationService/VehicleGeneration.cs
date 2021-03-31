@@ -53,7 +53,7 @@ namespace Autopark.Model.Service.GenerationService
             int mileage = _random.Next(0, 100000);
             int totalFuelCapacity = _random.Next(50, 150);
             RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
-            _manager = new ZilCreator(ProducerContries[index]);
+            _manager = new TruckCreator(ProducerContries[index]);
 
             return _manager.Create(id, Colors[index], rentPeriod, truckWeight, cost, mileage, totalFuelCapacity);
         }
@@ -61,24 +61,23 @@ namespace Autopark.Model.Service.GenerationService
         
         public Vehicle GetMotoCar(int id)
         {
-            var index = _random.Next(ProducerContries.Count);
             RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
             int motoCarWeight = _random.Next(3000, 20000);
             int mileage = _random.Next(0, 50000);
             int totalFuelCapacity = _random.Next(30, 60);
-
             decimal cost = default;
+
             if (_random.Next(CountMotoCarCreator) == 0)
             {
                 cost = _random.Next(10000, 25000);
-                _manager = new LadaCreator(ProducerContries[index]);
             }
             else
             {
                 cost = _random.Next(100000, 300000);
-                _manager = new LamborghiniCreator(ProducerContries[index]);
             }
 
+            var index = _random.Next(ProducerContries.Count);
+            _manager = new MotoCarCreator(ProducerContries[index]);
             return _manager.Create(id, Colors[index], rentPeriod, motoCarWeight, cost, mileage, totalFuelCapacity);
         }
 

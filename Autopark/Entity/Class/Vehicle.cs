@@ -1,8 +1,9 @@
 ﻿using Autopark.Entity.Enum;
+using Autopark.Entity.Interface;
 
 namespace Autopark.Entity.Class
 {
-    public class Vehicle
+    public class Vehicle : IMovable
     {
         public Vehicle()
         {
@@ -36,11 +37,16 @@ namespace Autopark.Entity.Class
         public int Mileage { get; init; }
         public int TotalFuelCapacity { get; init; }
 
+        public virtual string Move()
+        {
+            return "Vehicle move";
+        }
+
         #endregion
 
         public override string ToString()
         {
-            return $"Id - {Id}, Color - {Color}, Rent period hour number - {RentPeriod.HourNumber}, Rent period day number - {RentPeriod.DayNumber}, " +
+            return $"Id - {Id}, Color - {Color}, Rent period hour number - {RentPeriod.HourNumber}, Rent period hour number - {RentPeriod.HourNumber}, " +
                 $"Cost - {Cost}, Weight - {Weight}, Mileage - {Mileage}, Total fuel capacity - {TotalFuelCapacity}";
         }
     }

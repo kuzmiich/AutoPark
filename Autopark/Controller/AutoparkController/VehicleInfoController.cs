@@ -23,7 +23,7 @@ namespace Autopark.Controller.AutoparkController
 
         private static List<Vehicle> _transport;
         private static IOutputService _consoleOutput;
-        private static VehicleInfoService _vehicleInfoService = new();
+        private static readonly VehicleInfoService _vehicleInfoService = new();
 
         public void RunController()
         {

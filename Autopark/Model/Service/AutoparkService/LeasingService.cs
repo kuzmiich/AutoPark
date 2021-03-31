@@ -32,7 +32,7 @@ namespace Autopark.Model.Service.AutoperkService
 
         public decimal RentVehicle(List<Vehicle> transport, RentPeriod period, int vehicleId)
         {
-            int hour = period.GetHourNumber();
+            int hour = period.HourNumber;
             return RentCostVehicle(transport, vehicleId) * hour;
         }
     }

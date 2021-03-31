@@ -2,47 +2,36 @@
 {
     public class RentPeriod
     {
+        public int hourNumber;
+        public int dayNumber;
+        public int weekNumber;
+
         #region Constructors
         public RentPeriod()
         {
         }
 
-        public RentPeriod(int hoursNumber)
+        public RentPeriod(int hourNumber)
         {
-            HourNumber = hoursNumber;
+            this.hourNumber = hourNumber;
         }
 
-        public RentPeriod(int hoursCount, int dayNumber) : this(hoursCount)
+        public RentPeriod(int hourNumber, int dayNumber) : this(hourNumber)
         {
-            DayNumber = dayNumber;
+            this.dayNumber = dayNumber;
         }
 
-        public RentPeriod(int hourCount, int dayCount, int weekNumber) : this(hourCount, dayCount)
+        public RentPeriod(int hourNumber, int dayCount, int weekNumber) : this(hourNumber, dayCount)
         {
-            WeekNumber = weekNumber;
+            this.weekNumber = weekNumber;
         }
         #endregion
 
-        public int HourNumber { get; init; }
-
-        public int DayNumber { 
+        public int HourNumber { 
             get
             {
-                return HourNumber * 24;
+                return (weekNumber * 4 + dayNumber) * 24 + hourNumber;
             }
-            set { } 
-        }
-        public int WeekNumber { 
-            get
-            {
-                return HourNumber * 7;
-            }
-            set { } 
-        }
-
-        public int GetHourNumber()
-        {
-            return HourNumber + DayNumber + WeekNumber;
         }
     }
 }

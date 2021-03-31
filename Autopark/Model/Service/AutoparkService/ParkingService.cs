@@ -11,7 +11,7 @@ namespace Autopark.Model.Service.AutoparkService
 
         public decimal ParkVehicle(RentPeriod period)
         {
-            int hour = period.GetHourNumber();
+            int hour = period.HourNumber;
             return _parkingSpaceCost * hour;
         }
     }

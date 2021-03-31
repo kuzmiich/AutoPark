@@ -23,7 +23,7 @@ namespace Autopark.Controller.AutoparkController
 
         private static List<Vehicle> _transport;
         private static IOutputService _consoleOutput;
-        private static LeasingService _leasingService = new();
+        private static readonly LeasingService _leasingService = new();
 
 
         public void RunController()

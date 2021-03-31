@@ -2,19 +2,18 @@
 using Autopark.Entity.Enum;
 using Autopark.FactoryMethod.AbstractCreator;
 using Autopark.FactoryMethod.BaseProduct;
-using Autopark.FactoryMethod.Entity.Trucks;
 
 namespace Autopark.FactoryMethod.CreateArea.TruckCreators
 {
-    class ZilCreator : Creator
+    class TruckCreator : Creator
     {
-        public ZilCreator(string producerCountry) : base(producerCountry)
+        public TruckCreator(string producerCountry) : base(producerCountry)
         {
         }
 
         public override string ProducerCountry { get; set; }
 
-        public override Truck Create(int id,
+        public override Vehicle Create(int id,
             ColorType colorType,
             RentPeriod rentPeriod,
             long weight,
@@ -23,7 +22,7 @@ namespace Autopark.FactoryMethod.CreateArea.TruckCreators
             int totalFuelCapacity
             )
         {
-            return new Zil(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity);
+            return new Truck(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity);
         }
     }
 }

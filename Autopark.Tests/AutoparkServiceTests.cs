@@ -1,4 +1,5 @@
 using Autopark.Entity.Class;
+using Autopark.Entity.Enum;
 using Autopark.Model.Service.AutoperkService;
 using Autopark.Model.Service.GenerationService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -16,10 +17,11 @@ namespace Autopark.Tests
 			var service = new AutoparkInfoService();
 			List<Vehicle> _transport = null;
 			// act
-			var res = service.TotalVehicleCost(_transport);
+			service.BuyVehicle(_transport, 2, VehicleType.MotorCar);
+			List<Vehicle> res = null;
 
 			// assert
-			Assert.AreEqual(1000, res);
+			Assert.AreEqual(null, res);
 		}
 	}
 }

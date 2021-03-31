@@ -1,5 +1,5 @@
 ﻿using Autopark.Entity.Class;
-using Autopark.Services.Model;
+using Autopark.Services.Model.Extension.DataAnnotation;
 using System.Collections.Generic;
 
 namespace Autopark.Model.Extension
