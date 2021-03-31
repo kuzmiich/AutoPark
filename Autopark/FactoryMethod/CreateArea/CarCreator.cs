@@ -13,7 +13,7 @@ namespace Autopark.FactoryMethod.CreateArea
 
         public override string ProducerCountry { get; set; }
 
-        public override Vehicle Create(int id,
+        public override Vehicle CreateVehicle(int id,
             ColorType colorType,
             RentPeriod rentPeriod,
             long weight,

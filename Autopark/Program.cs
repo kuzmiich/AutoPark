@@ -19,7 +19,7 @@ namespace Autopark
         private static readonly IOutputService _consoleOutput = ConsoleOutput.GetInstance();
         private static readonly IGenerationService _generator = new VehicleGeneration();
 
-        static void Main(string[] args)
+        static void Main()
         {
 
             _consoleOutput.ShowMessage("Input count of car in the autopark:");

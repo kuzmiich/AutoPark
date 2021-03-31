@@ -56,7 +56,7 @@ namespace Autopark.Model.Service.GenerationService
             RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
             _manager = new TruckCreator(ProducerContries[produceContriesIndex]);
 
-            return _manager.Create(id, Colors[colorIndex], rentPeriod, truckWeight, cost, mileage, totalFuelCapacity, VehicleBrand.TruckBrand[brandIndex]);
+            return _manager.CreateVehicle(id, Colors[colorIndex], rentPeriod, truckWeight, cost, mileage, totalFuelCapacity, VehicleBrand.TruckBrand[brandIndex]);
         }
 
         
@@ -81,7 +81,14 @@ namespace Autopark.Model.Service.GenerationService
             }
 
             _manager = new CarCreator(ProducerContries[produceContrieIndex]);
-            return _manager.Create(id, Colors[colorIndex], rentPeriod, motoCarWeight, cost, mileage, totalFuelCapacity, VehicleBrand.CarBrand[brandIndex]);
+            return _manager.CreateVehicle(id,
+                Colors[colorIndex],
+                rentPeriod,
+                motoCarWeight,
+                cost,
+                mileage,
+                totalFuelCapacity,
+                VehicleBrand.CarBrand[brandIndex]);
         }
 
         public List<Vehicle> GetCars(int count)

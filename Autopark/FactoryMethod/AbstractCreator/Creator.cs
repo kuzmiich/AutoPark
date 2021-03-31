@@ -30,7 +30,7 @@ namespace Autopark.FactoryMethod.AbstractCreator
         /// <param name="mileage">Transport mileage</param>
         /// <param name="totalFuelCapacity">Transport total fuel capacity</param>
         /// <returns>IMovable object</returns>
-        public abstract Vehicle Create(
+        public abstract Vehicle CreateVehicle(
             int id,
             ColorType colorType,
             RentPeriod rentPeriod,
