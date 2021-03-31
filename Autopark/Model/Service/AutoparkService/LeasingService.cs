@@ -1,41 +1,39 @@
 ﻿using Autopark.Entity.Class;
-using Autopark.Entity.Enum;
+using Autopark.Entity.Const;
 using System;
 using System.Collections.Generic;
 
 namespace Autopark.Model.Service.AutoperkService
 {
-    public class LeasingService : AbstractService
+    public class LeasingService : IService
     {
-        private const int DefaultRentCost = 50;
+        private const decimal DefaultRentCost = 50;
 
-        public LeasingService(List<Vehicle> transport) : base(transport)
+        public LeasingService()
         {
         }
 
-        public override List<Vehicle> Transport { get; init; }
-
-        private decimal RentCostVehicle(int id)
+        private decimal RentCostVehicle(List<Vehicle> transport, int id)
         {
             if (id <= 0)
             {
                 throw new ArgumentException("Error, incorrect id.");
             }
 
-            return Transport[id].Brand switch
+            return transport[id].Brand switch
             {
-                "Lada" => (decimal)(DefaultRentCost * VehicleCoef.Lada),
-                "Lamborghini" => (decimal)(DefaultRentCost * VehicleCoef.Lamborghini),
-                "Zil" => (decimal)(DefaultRentCost * VehicleCoef.Zil),
+                VehicleBrand.Lada => DefaultRentCost * VehicleCoef.Lada,
+                VehicleBrand.Lamborghini => (DefaultRentCost * VehicleCoef.Lamborghini),
+                VehicleBrand.Zil => (DefaultRentCost * VehicleCoef.Zil),
 
                 _ => throw new ArgumentOutOfRangeException("Error, index out of range.")
             };
         }
 
-        public decimal RentVehicle(RentPeriod period, int vehicleId)
+        public decimal RentVehicle(List<Vehicle> transport, RentPeriod period, int vehicleId)
         {
             int hour = period.GetHourNumber();
-            return RentCostVehicle(vehicleId) * hour;
+            return RentCostVehicle(transport, vehicleId) * hour;
         }
     }
 }

@@ -12,25 +12,24 @@ namespace Autopark.Controller.AutoparkController
         {
             _transport = transport;
             _consoleOutput = consoleOutput;
-            _parkingService = new ParkingService(_transport);
         }
 
         private static List<Vehicle> _transport;
         private static IOutputService _consoleOutput;
-        private static ParkingService _parkingService;
+        private static ParkingService _parkingService = new();
 
 
         public void RunController()
         {
             _consoleOutput.ShowMessage("Parking a vehicle:");
 
-            short hourNumber1 = 5;
-            _consoleOutput.ShowMessage($"Сost of parking space, rent period {hourNumber1} hours -" +
-                $"{_parkingService.ParkVehicle(new RentPeriod(hourNumber1))}");
+            short vehicleId1 = 5;
+            _consoleOutput.ShowMessage($"Сost of parking space, rent period {_transport[vehicleId1].RentPeriod.GetHourNumber()} hours -" +
+                $"{_parkingService.ParkVehicle(_transport[vehicleId1].RentPeriod)}");
 
-            short hourNumber2 = 20;
-            _consoleOutput.ShowMessage($"Сost of parking space, rent period {hourNumber2} hours -" +
-                $"{_parkingService.ParkVehicle(new RentPeriod(hourNumber2))}");
+            short vehicleId2 = 2;
+            _consoleOutput.ShowMessage($"Сost of parking space, rent period {_transport[vehicleId2].RentPeriod.GetHourNumber()} hours -" +
+                $"{_parkingService.ParkVehicle(_transport[vehicleId2].RentPeriod)}");
 
             _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }

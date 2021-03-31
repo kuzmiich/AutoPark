@@ -4,22 +4,35 @@ using System.Linq;
 
 namespace Autopark.Model.Service.AutoperkService
 {
-    public class VehicleInfoService : AbstractService
+    public class VehicleInfoService : IService
     {
-        public VehicleInfoService(List<Vehicle> transport) : base(transport)
+        public VehicleInfoService()
         {
         }
 
-        public override List<Vehicle> Transport { get; init; }
+        public long TotalWeight(List<Vehicle> transport)
+        {
+            return transport.Sum(x => x.Weight);
+        }
 
-        public long TotalWeight => Transport.Sum(x => x.Weight);
+        public int MaxMileage(List<Vehicle> transport)
+        {
+            return transport.Max(x => x.Mileage);
+        }
 
-        public int MaxMileage => Transport.Max(x => x.Mileage);
+        public double MinMileage(List<Vehicle> transport)
+        {
+            return transport.Min(x => x.Mileage);
+        }
 
-        public double MinMileage => Transport.Min(x => x.Mileage);
+        public double TotalMileage(List<Vehicle> transport)
+        {
+            return transport.Sum(x => x.Mileage);
+        }
 
-        public double TotalMileage => Transport.Sum(x => x.Mileage);
-
-        public int TotalFuelCapacity => Transport.Sum(x => x.TotalFuelCapacity);
+        public int TotalFuelCapacity(List<Vehicle> transport)
+        {
+            return transport.Sum(x => x.TotalFuelCapacity);
+        }
     }
 }

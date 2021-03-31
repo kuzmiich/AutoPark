@@ -19,20 +19,19 @@ namespace Autopark.Controller.AutoparkController
         {
             _transport = transport;
             _consoleOutput = consoleOutput;
-            _vehicleInfoService = new VehicleInfoService(_transport);
         }
 
         private static List<Vehicle> _transport;
         private static IOutputService _consoleOutput;
-        private static VehicleInfoService _vehicleInfoService;
+        private static VehicleInfoService _vehicleInfoService = new();
 
         public void RunController()
         {
-            _consoleOutput.ShowMessage($"Max mileage = {_vehicleInfoService.MaxMileage}");
-            _consoleOutput.ShowMessage($"Min mileage = {_vehicleInfoService.MinMileage}");
-            _consoleOutput.ShowMessage($"Total mileage = {_vehicleInfoService.TotalMileage}");
-            _consoleOutput.ShowMessage($"Total fuel capacity = {_vehicleInfoService.TotalFuelCapacity}");
-            _consoleOutput.ShowMessage($"Total weight = {_vehicleInfoService.TotalWeight}");
+            _consoleOutput.ShowMessage($"Max mileage = {_vehicleInfoService.MaxMileage(_transport)}");
+            _consoleOutput.ShowMessage($"Min mileage = {_vehicleInfoService.MinMileage(_transport)}");
+            _consoleOutput.ShowMessage($"Total mileage = {_vehicleInfoService.TotalMileage(_transport)}");
+            _consoleOutput.ShowMessage($"Total fuel capacity = {_vehicleInfoService.TotalFuelCapacity(_transport)}");
+            _consoleOutput.ShowMessage($"Total weight = {_vehicleInfoService.TotalWeight(_transport)}");
 
             _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }

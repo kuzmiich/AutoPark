@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Autopark.Model.Service.AutoperkService
 {
-    public class AutoparkInfoService : AbstractService
+    public class AutoparkInfoService : IService
     {
         private const int coefAutoparkCost = 5000;
         public static float autoparkSquare = 3350.50f;
@@ -16,12 +16,10 @@ namespace Autopark.Model.Service.AutoperkService
 
         private VehicleGeneration _generator;
 
-        public AutoparkInfoService(List<Vehicle> transport) : base(transport)
+        public AutoparkInfoService()
         {
             _generator = new VehicleGeneration();
         }
-
-        public override List<Vehicle> Transport { get; init; }
 
         /// <summary>
         /// Buy a certain number of cars
@@ -30,54 +28,71 @@ namespace Autopark.Model.Service.AutoperkService
         /// <param name="count">Number of Vehicles</param>
         /// <param name="type">Transport type</param>
         /// <returns>Some number random vehicle</returns>
-        public void BuyVehicle(int count, VehicleType type)
+        public void BuyVehicle(List<Vehicle> transport, int count, VehicleType type)
         {
             for (int i = 0; i < count; i++)
             {
-                BuyVehicle(type);
+                BuyVehicle(transport, type);
             }
         }
+
         /// <summary>
         /// Buy only one vehicle
         /// </summary>
         /// <param name="vehicles">List Vehicles</param>
         /// <param name="type">Transport type</param>
         /// <returns>One random vehicle</returns>
-        public void BuyVehicle(VehicleType type)
+        public void BuyVehicle(List<Vehicle> transport, VehicleType type)
         {
-            Transport.Rules()
+            transport.Rules()
                 .TypeCharacter(type)
                 .Validate();
 
-            Transport.Add(_generator.GetMotoCar(Transport.Count + 1));
+            transport.Add(_generator.GetMotoCar(transport.Count + 1));
         }
 
-        public decimal SellVehicle(int count)
+        public decimal SellVehicle(List<Vehicle> transport, int count)
         {
             decimal totalCost = 0;
             for (int i = 0; i < count; i++)
             {
-                totalCost += SellVehicle();
+                totalCost += SellVehicle(transport);
             }
             return totalCost;
         }
-        public decimal SellVehicle()
+
+        public decimal SellVehicle(List<Vehicle> transport)
         {
-            int lastVehicleIndex = Transport.Count - 1;
-            decimal totalCost = Transport[lastVehicleIndex].Cost;
-            Transport.RemoveAt(Transport.Count - 1);
+            int lastVehicleIndex = transport.Count - 1;
+            decimal totalCost = transport[lastVehicleIndex].Cost;
+            transport.RemoveAt(transport.Count - 1);
 
             return totalCost;
         }
 
-        public decimal TotalVehicleCost => Transport.Sum(x => x.Cost);
+        public decimal TotalVehicleCost(List<Vehicle> transport)
+        {
+            return transport.Sum(x => x.Cost);
+        }
 
-        public IOrderedEnumerable<Vehicle> SortByCost() => Transport.OrderBy(x => x.Cost);
+        public IOrderedEnumerable<Vehicle> SortByCost(List<Vehicle> transport)
+        {
+            return transport.OrderBy(x => x.Cost);
+        }
 
-        public IOrderedEnumerable<Vehicle> SortByWeight() => Transport.OrderBy(x => x.Weight);
+        public IOrderedEnumerable<Vehicle> SortByWeight(List<Vehicle> transport)
+        {
+            return transport.OrderBy(x => x.Weight);
+        }
 
-        public IOrderedEnumerable<Vehicle> SortById() => Transport.OrderBy(x => x.Id);
+        public IOrderedEnumerable<Vehicle> SortById(List<Vehicle> transport)
+        {
+            return transport.OrderBy(x => x.Id);
+        }
 
-        public IOrderedEnumerable<Vehicle> SortByTotalFuelCapacity() => Transport.OrderBy(x => x.TotalFuelCapacity);
+        public IOrderedEnumerable<Vehicle> SortByTotalFuelCapacity(List<Vehicle> transport)
+        {
+            return transport.OrderBy(x => x.TotalFuelCapacity);
+        }
     }
 }

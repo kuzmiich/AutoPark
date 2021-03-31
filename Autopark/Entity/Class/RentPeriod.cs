@@ -2,41 +2,47 @@
 {
     public class RentPeriod
     {
+        #region Constructors
         public RentPeriod()
         {
         }
 
-        public RentPeriod(int hoursCount)
+        public RentPeriod(int hoursNumber)
         {
-            HoutNumber = hoursCount;
+            HourNumber = hoursNumber;
         }
 
-        public RentPeriod(int hoursCount, int dayCount) : this(hoursCount)
+        public RentPeriod(int hoursCount, int dayNumber) : this(hoursCount)
         {
-            DayNumber = dayCount;
+            DayNumber = dayNumber;
         }
 
-        public RentPeriod(int hourCount, int dayCount, int weekCount) : this(hourCount, dayCount)
+        public RentPeriod(int hourCount, int dayCount, int weekNumber) : this(hourCount, dayCount)
         {
-            WeekCount = weekCount;
+            WeekNumber = weekNumber;
         }
+        #endregion
 
-        public int HoutNumber { get; set; }
-        public int DayNumber { get; set; }
-        public int WeekCount { get; set; }
+        public int HourNumber { get; init; }
+
+        public int DayNumber { 
+            get
+            {
+                return HourNumber * 24;
+            }
+            set { } 
+        }
+        public int WeekNumber { 
+            get
+            {
+                return HourNumber * 7;
+            }
+            set { } 
+        }
 
         public int GetHourNumber()
         {
-            int hourNumber = HoutNumber;
-            if (DayNumber > 0)
-            {
-                hourNumber += DayNumber * 24;
-            }
-            else if (WeekCount > 0)
-            {
-                hourNumber += WeekCount * 7;
-            }
-            return hourNumber;
+            return HourNumber + DayNumber + WeekNumber;
         }
     }
 }
