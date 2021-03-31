@@ -1,4 +1,4 @@
-﻿namespace Autopark.Model.Service.InputService
+﻿namespace Autopark.InputService
 {
     public interface IInputService
     {

@@ -17,24 +17,24 @@ namespace Autopark.Controller.AutoparkController
         /// <param name="consoleOutput"></param>
         public VehicleInfoController(List<Vehicle> transport, IOutputService consoleOutput)
         {
-            Transport = transport;
-            ConsoleOutput = consoleOutput;
-            Engine = new VehicleInfoService(Transport);
+            _transport = transport;
+            _consoleOutput = consoleOutput;
+            _vehicleInfoService = new VehicleInfoService(_transport);
         }
 
-        public List<Vehicle> Transport { get; }
-        public IOutputService ConsoleOutput { get; }
-        private VehicleInfoService Engine { get; set; }
+        private static List<Vehicle> _transport;
+        private static IOutputService _consoleOutput;
+        private static VehicleInfoService _vehicleInfoService;
 
         public void RunController()
         {
-            ConsoleOutput.ShowMessage($"Max mileage = {Engine.MaxMileage}");
-            ConsoleOutput.ShowMessage($"Min mileage = {Engine.MinMileage}");
-            ConsoleOutput.ShowMessage($"Total mileage = {Engine.TotalMileage}");
-            ConsoleOutput.ShowMessage($"Total fuel capacity = {Engine.TotalFuelCapacity}");
-            ConsoleOutput.ShowMessage($"Total weight = {Engine.TotalWeight}");
+            _consoleOutput.ShowMessage($"Max mileage = {_vehicleInfoService.MaxMileage}");
+            _consoleOutput.ShowMessage($"Min mileage = {_vehicleInfoService.MinMileage}");
+            _consoleOutput.ShowMessage($"Total mileage = {_vehicleInfoService.TotalMileage}");
+            _consoleOutput.ShowMessage($"Total fuel capacity = {_vehicleInfoService.TotalFuelCapacity}");
+            _consoleOutput.ShowMessage($"Total weight = {_vehicleInfoService.TotalWeight}");
 
-            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
+            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
 }

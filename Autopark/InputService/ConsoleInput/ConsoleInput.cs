@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Autopark.InputService;
+using System;
 
-namespace Autopark.Model.Service.InputService.ConsoleInput
+namespace AutoparkInputService.ConsoleInput
 {
     public class ConsoleInput : IInputService
     {

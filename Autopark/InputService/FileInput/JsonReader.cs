@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Autopark.Model.Service.InputService.FileInput
+namespace Autopark.InputService.FileInput
 {
     public class JsonFileReader : IJsonInputService
     {

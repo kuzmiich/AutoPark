@@ -13,38 +13,38 @@ namespace Autopark.Controller.AutoparkController
     {
         public AutoparkInfoController(List<Vehicle> transport, IOutputService consoleOutput)
         {
-            Transport = transport;
-            ConsoleOutput = consoleOutput;
-            Engine = new AutoparkInfoService(Transport);
+            _transport = transport;
+            _consoleOutput = consoleOutput;
+            _autoparkInfoService = new AutoparkInfoService(_transport);
         }
 
-        public List<Vehicle> Transport { get; }
-        public IOutputService ConsoleOutput { get; }
-        private AutoparkInfoService Engine { get; set; }
+        private static List<Vehicle> _transport;
+        private static IOutputService _consoleOutput;
+        private static AutoparkInfoService _autoparkInfoService;
 
         public void RunController()
         {
-            ConsoleOutput.ShowMessage($"Autopark cost - {AutoparkInfoService.autoparkCost}");
-            ConsoleOutput.ShowMessage($"Autopark square - {AutoparkInfoService.autoparkSquare}");
+            _consoleOutput.ShowMessage($"Autopark cost - {AutoparkInfoService.autoparkCost}");
+            _consoleOutput.ShowMessage($"Autopark square - {AutoparkInfoService.autoparkSquare}");
 
-            ConsoleOutput.ShowMessage($"Total vehicle cost - {Engine.TotalVehicleCost}");
-            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
+            _consoleOutput.ShowMessage($"Total vehicle cost - {_autoparkInfoService.TotalVehicleCost}");
+            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
-            Engine.BuyVehicle(4, VehicleType.Truck);
-            ConsoleOutput.ShowMessage($"Buy 4 vehicle. Vehicle number - {Transport.Count}");
+            _autoparkInfoService.BuyVehicle(4, VehicleType.Truck);
+            _consoleOutput.ShowMessage($"Buy 4 vehicle. Vehicle number - {_transport.Count}");
 
-            Engine.SellVehicle(2);
-            ConsoleOutput.ShowMessage($"Sell 2 vehicle. Vehicle number - {Transport.Count}");
+            _autoparkInfoService.SellVehicle(2);
+            _consoleOutput.ShowMessage($"Sell 2 vehicle. Vehicle number - {_transport.Count}");
 
-            ConsoleOutput.ShowMessage($"Sort by Cost: \n{string.Join('\n', Engine.SortByCost())}");
-            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
+            _consoleOutput.ShowMessage($"Sort by Cost: \n{string.Join('\n', _autoparkInfoService.SortByCost())}");
+            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
-            ConsoleOutput.ShowMessage($"Sort by id: \n{string.Join('\n', Engine.SortById())}");
-            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
+            _consoleOutput.ShowMessage($"Sort by id: \n{string.Join('\n', _autoparkInfoService.SortById())}");
+            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
 
-            Engine.SortByTotalFuelCapacity();
-            ConsoleOutput.ShowMessage($"Sort by total fuel capacity: \n{string.Join('\n', Engine.SortByTotalFuelCapacity())}");
-            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
+            _autoparkInfoService.SortByTotalFuelCapacity();
+            _consoleOutput.ShowMessage($"Sort by total fuel capacity: \n{string.Join('\n', _autoparkInfoService.SortByTotalFuelCapacity())}");
+            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
 }

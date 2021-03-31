@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Autopark.Model.Service.InputService
+namespace Autopark.InputService
 {
     interface IJsonInputService
     {

@@ -17,25 +17,26 @@ namespace Autopark.Controller.AutoparkController
         /// <param name="consoleOutput"></param>
         public LeasingController(List<Vehicle> transport, IOutputService consoleOutput)
         {
-            Transport = transport;
-            ConsoleOutput = consoleOutput;
-            Engine = new LeasingService(Transport);
+            _transport = transport;
+            _consoleOutput = consoleOutput;
+            _leasingService = new LeasingService(_transport);
         }
 
-        public List<Vehicle> Transport { get; }
-        public IOutputService ConsoleOutput { get; }
-        private LeasingService Engine { get; set; }
+        private static List<Vehicle> _transport;
+        private static IOutputService _consoleOutput;
+        private static LeasingService _leasingService;
 
 
         public void RunController()
         {
-            ConsoleOutput.ShowMessage($"Cost rent a {Transport[4].Brand} -" +
-                $" {Engine.RentVehicle(new RentPeriod(0, 2), 4)}");
+            _consoleOutput.ShowMessage("Rent a vehicle:");
+            _consoleOutput.ShowMessage($"Cost rent a {_transport[4].Brand} -" +
+                $" {_leasingService.RentVehicle(new RentPeriod(0, 2), 4)}");
 
-            ConsoleOutput.ShowMessage($"Cost rent a {Transport[9].Brand} -" +
-                $" {Engine.RentVehicle(new RentPeriod(12, 1), 9)}");
+            _consoleOutput.ShowMessage($"Cost rent a {_transport[9].Brand} -" +
+                $" {_leasingService.RentVehicle(new RentPeriod(12, 1), 9)}");
 
-            ConsoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
+            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
 }
