@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autopark", "Autopark\Autopark.csproj", "{4AE0F0BD-6D43-4B0A-9819-7AF8F129778F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autopark.Test", "Autopark.Test\Autopark.Test.csproj", "{82B8AB1D-1383-4A65-8E3D-B9D1AC9BAA2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autopark.Tests", "Autopark.Test\Autopark.Tests.csproj", "{82B8AB1D-1383-4A65-8E3D-B9D1AC9BAA2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

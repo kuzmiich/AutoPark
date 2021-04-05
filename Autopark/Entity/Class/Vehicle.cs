@@ -1,5 +1,6 @@
 ﻿using Autopark.Entity.Enum;
 using Autopark.Entity.Interface;
+using System.ComponentModel.DataAnnotations;
 
 namespace Autopark.Entity.Class
 {
@@ -29,14 +30,25 @@ namespace Autopark.Entity.Class
         }
 
         #region Class Property
-
+        [Range(1, int.MaxValue)]
         public virtual int Id { get; set; }
+
         public virtual ColorType Color { get; set; }
+
         public virtual RentPeriod RentPeriod { get; set; }
+
+        [Range(1, double.MaxValue)]
         public decimal Cost { get; set; }
+
+        [Range(1, long.MaxValue)]
         public long Weight { get; set; }
+
+        [Range(1, long.MaxValue)]
         public int Mileage { get; init; }
+
+        [Range(1, int.MaxValue)]
         public int TotalFuelCapacity { get; init; }
+
         public virtual string Brand { get; init; }
 
         #endregion

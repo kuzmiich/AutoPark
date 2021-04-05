@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace Autopark.Entity.Const
 {
-    public struct VehicleBrand
+    public static class VehicleBrand
     {
         public const string Lamborghini = "Lamborghini";
         public const string Lada = "Lada";
+
         public static List<string> CarBrand => new()
         {
             Lada,
