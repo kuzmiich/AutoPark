@@ -1,5 +1,6 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
+using Autopark.Model.Service;
 using Autopark.Model.Service.AutoperkService;
 using Autopark.View;
 using System.Collections.Generic;
@@ -17,9 +18,9 @@ namespace Autopark.Controller.AutoparkController
             _consoleOutput = consoleOutput;
         }
 
-        private static List<Vehicle> _transport;
+        private List<Vehicle> _transport;
         private static IOutputService _consoleOutput;
-        private static readonly AutoparkInfoService _autoparkInfoService = new();
+        private static readonly IAutoparkInfoService _autoparkInfoService = new AutoparkInfoService();
 
         public void RunController()
         {
@@ -32,16 +33,10 @@ namespace Autopark.Controller.AutoparkController
             _autoparkInfoService.BuyVehicle(_transport, 4, VehicleType.Truck);
             _consoleOutput.ShowMessage($"Buy 4 vehicle. Vehicle count - {_transport.Count}");
 
-            AutoparkInfoService.SellVehicle(_transport, 2);
+            _autoparkInfoService.SellVehicle(_transport, 2);
             _consoleOutput.ShowMessage($"Sell 2 vehicle. Vehicle count - {_transport.Count}");
 
-            _consoleOutput.ShowMessage($"Sort by Cost: \n{string.Join('\n', AutoparkInfoService.SortByCost(_transport))}");
-            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
-
-            _consoleOutput.ShowMessage($"Sort by id: \n{string.Join('\n', AutoparkInfoService.SortById(_transport))}");
-            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
-
-            _consoleOutput.ShowMessage($"Sort by total fuel capacity: \n{string.Join('\n', AutoparkInfoService.SortByTotalFuelCapacity(_transport))}");
+            _consoleOutput.ShowMessage($"Sort by Id: \n{string.Join('\n', AutoparkInfoService.SortByCreteria(_transport, SortingCriteriaType.Id))}");
             _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }

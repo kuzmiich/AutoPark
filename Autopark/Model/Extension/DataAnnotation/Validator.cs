@@ -19,7 +19,7 @@ namespace Autopark.Services.Model.Extension.DataAnnotation
             var arrayVehicleType = Enum.GetValues(typeof(VehicleType)).Cast<VehicleType>();
             foreach (var type in arrayVehicleType)
             {
-                if(vehicleType == type)
+                if(type == vehicleType)
                 {
                     _isValidate = true;
                 }

@@ -5,14 +5,14 @@ namespace Autopark.Entity.Class
 {
     public class RentPeriod
     {
-        [Range(1, RentCoef.MaxHourOfDay)]
-        public int hourNumber;
+        [Range(0, RentCoef.MaxHourOfDay)]
+        public int hourNumber { get; set; }
 
-        [Range(1, RentCoef.MaxDayOfWeek)]
-        public int dayNumber;
+        [Range(0, RentCoef.MaxDayOfWeek)]
+        public int dayNumber { get; set; }
 
-        [Range(1, RentCoef.MaxWeekOfMonth)]
-        public int weekNumber;
+        [Range(0, RentCoef.MaxWeekOfMonth)]
+        public int weekNumber { get; set; }
 
         #region Constructors
         public RentPeriod()
@@ -35,8 +35,7 @@ namespace Autopark.Entity.Class
         }
         #endregion
 
-        public int HourNumber { 
-            get => (weekNumber * RentCoef.MaxWeekOfMonth + dayNumber) * RentCoef.MaxHourOfDay + hourNumber;
-        }
+        [Range(0, int.MaxValue)]
+        public int HourNumber => (weekNumber * RentCoef.MaxWeekOfMonth + dayNumber) * RentCoef.MaxHourOfDay + hourNumber;
     }
 }

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Autopark.Model.Service.AutoperkService
 {
-    public class LeasingService : IService
+    public class LeasingService : ILeasingService
     {
-        private const decimal DefaultRentCost = 50;
+        private const decimal DefaultRentCost = 50m;
 
         public LeasingService()
         {
@@ -33,6 +33,7 @@ namespace Autopark.Model.Service.AutoperkService
         public decimal RentVehicle(List<Vehicle> transport, RentPeriod period, int vehicleId)
         {
             int hour = period.HourNumber;
+
             return RentCostVehicle(transport, vehicleId) * hour;
         }
     }

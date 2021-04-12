@@ -3,15 +3,14 @@ using System.Collections.Generic;
 
 namespace Autopark.Model.Service.AutoparkService
 {
-    public class ParkingService : IService
+    public class ParkingService : IParkingService
     {
-        public readonly int Gain;
         private const int _parkingSpaceCost = 5;
-
 
         public decimal ParkVehicle(RentPeriod period)
         {
             int hour = period.HourNumber;
+
             return _parkingSpaceCost * hour;
         }
     }

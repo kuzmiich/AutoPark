@@ -43,12 +43,13 @@ namespace Autopark.Entity.Class
         [Range(1, long.MaxValue)]
         public long Weight { get; set; }
 
-        [Range(1, long.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int Mileage { get; init; }
 
         [Range(1, int.MaxValue)]
         public int TotalFuelCapacity { get; init; }
-
+        
+        [MaxLength(100)]
         public virtual string Brand { get; init; }
 
         #endregion

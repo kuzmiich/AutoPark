@@ -1,38 +1,59 @@
 ﻿using Autopark.Entity.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Autopark.Model.Service.AutoperkService
 {
-    public class VehicleInfoService : IService
+    public class VehicleInfoService : IVehicleInfoService
     {
         public VehicleInfoService()
         {
         }
 
-        public long TotalWeight(List<Vehicle> transport)
+        public long TotalWeight(IEnumerable<Vehicle> vehicles)
         {
-            return transport.Sum(x => x.Weight);
+            if (vehicles is null)
+            {
+                throw new ArgumentNullException("Error, vehicle is null");
+            }
+            return vehicles.Sum(x => x.Weight);
         }
 
-        public int MaxMileage(List<Vehicle> transport)
+        public int MaxMileage(IEnumerable<Vehicle> vehicles)
         {
-            return transport.Max(x => x.Mileage);
+            if (vehicles is null)
+            {
+                throw new ArgumentNullException("Error, vehicle is null");
+            }
+            return vehicles.Max(x => x.Mileage);
         }
 
-        public double MinMileage(List<Vehicle> transport)
+        public double MinMileage(IEnumerable<Vehicle> vehicles)
         {
-            return transport.Min(x => x.Mileage);
+            if (vehicles is null)
+            {
+                throw new ArgumentNullException("Error, vehicle is null");
+            }
+            return vehicles.Min(x => x.Mileage);
         }
 
-        public double TotalMileage(List<Vehicle> transport)
+        public double TotalMileage(IEnumerable<Vehicle> vehicles)
         {
-            return transport.Sum(x => x.Mileage);
+            if (vehicles is null)
+            {
+                throw new ArgumentNullException("Error, vehicle is null");
+            }
+            return vehicles.Sum(x => x.Mileage);
         }
 
-        public int TotalFuelCapacity(List<Vehicle> transport)
+        public int TotalFuelCapacity(IEnumerable<Vehicle> vehicles)
         {
-            return transport.Sum(x => x.TotalFuelCapacity);
+            if (vehicles is null)
+            {
+                throw new ArgumentNullException("Error, vehicle is null");
+            }
+            return vehicles.Sum(x => x.TotalFuelCapacity);
         }
     }
 }

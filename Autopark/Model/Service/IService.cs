@@ -1,6 +1,6 @@
 ﻿namespace Autopark.Model.Service
 {
-    interface IService
+    interface IService : IAutoparkInfoService, ILeasingService, IParkingService, IVehicleInfoService
     {
 
     }

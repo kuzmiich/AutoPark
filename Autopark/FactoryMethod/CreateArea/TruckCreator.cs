@@ -5,7 +5,7 @@ using Autopark.FactoryMethod.AbstractProduct;
 
 namespace Autopark.FactoryMethod.CreateArea
 {
-    class TruckCreator : Creator
+    public class TruckCreator : Creator
     {
         public TruckCreator(string producerCountry) : base(producerCountry)
         {

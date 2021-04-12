@@ -21,8 +21,8 @@ namespace Autopark.Controller.AutoparkController
             _consoleOutput = consoleOutput;
         }
 
-        private static List<Vehicle> _transport;
-        private static IOutputService _consoleOutput;
+        private List<Vehicle> _transport;
+        private IOutputService _consoleOutput;
         private static readonly LeasingService _leasingService = new();
 
 

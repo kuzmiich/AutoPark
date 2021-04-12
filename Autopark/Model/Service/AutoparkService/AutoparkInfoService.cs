@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace Autopark.Model.Service.AutoperkService
 {
-    public class AutoparkInfoService : IService
+    public class AutoparkInfoService : IAutoparkInfoService
     {
-        private const decimal coefAutoparkCost = 5000m;
+        private const decimal CoefAutoparkCost = 5000m;
         public static decimal autoparkSquare = 3350.5m;
-        public static decimal autoparkCost = autoparkSquare * coefAutoparkCost;
+        public static decimal autoparkCost = autoparkSquare * CoefAutoparkCost;
 
         private readonly VehicleGeneration _generator;
 
@@ -57,7 +57,7 @@ namespace Autopark.Model.Service.AutoperkService
         /// <param name="transport"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public static decimal SellVehicle(List<Vehicle> transport, int count)
+        public decimal SellVehicle(List<Vehicle> transport, int count)
         {
             decimal totalCost = 0;
             for (int i = 0; i < count; i++)
@@ -72,7 +72,7 @@ namespace Autopark.Model.Service.AutoperkService
         /// </summary>
         /// <param name="transport"></param>
         /// <returns></returns>
-        public static decimal SellVehicle(List<Vehicle> transport)
+        public decimal SellVehicle(List<Vehicle> transport)
         {
             int lastVehicleIndex = transport.Count - 1;
             decimal totalCost = transport[lastVehicleIndex].Cost;
@@ -86,24 +86,16 @@ namespace Autopark.Model.Service.AutoperkService
             return transport.Sum(x => x.Cost);
         }
 
-        public static IOrderedEnumerable<Vehicle> SortByCost(List<Vehicle> transport)
+        public static IOrderedEnumerable<Vehicle> SortByCreteria(List<Vehicle> transport, SortingCriteriaType sortingCreteria)
         {
-            return transport.OrderBy(x => x.Cost);
-        }
-
-        public static IOrderedEnumerable<Vehicle> SortByWeight(List<Vehicle> transport)
-        {
-            return transport.OrderBy(x => x.Weight);
-        }
-
-        public static IOrderedEnumerable<Vehicle> SortById(List<Vehicle> transport)
-        {
-            return transport.OrderBy(x => x.Id);
-        }
-
-        public static IOrderedEnumerable<Vehicle> SortByTotalFuelCapacity(List<Vehicle> transport)
-        {
-            return transport.OrderBy(x => x.TotalFuelCapacity);
+            return (int)sortingCreteria switch
+            {
+                0 => transport.OrderBy(x => x.Id),
+                1 => transport.OrderBy(x => x.Cost),
+                2 => transport.OrderBy(x => x.Weight),
+                3 => transport.OrderBy(x => x.TotalFuelCapacity),
+                _ => throw new ArgumentException("Sort createria not valid")
+            };
         }
     }
 }

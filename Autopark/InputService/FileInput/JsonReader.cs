@@ -17,35 +17,27 @@ namespace Autopark.InputService.FileInput
 
         public async Task<List<Vehicle>> GetVehicles()
         {
-            List<Vehicle> vehicles;
-            using (FileStream fin = new(_path, FileMode.OpenOrCreate))
+            if (File.Exists(_path))
             {
-                try
+                using (FileStream fin = new(_path, FileMode.OpenOrCreate))
                 {
-                    vehicles = await JsonSerializer.DeserializeAsync<List<Vehicle>>(fin);
-                }
-                catch
-                {
-                    vehicles = new List<Vehicle>();
+                    return await JsonSerializer.DeserializeAsync<List<Vehicle>>(fin);
                 }
             }
-            return vehicles;
+
+            return new List<Vehicle>();
         }
         public async Task<Vehicle> GetVehicle()
         {
-            Vehicle vehicle;
-            using (FileStream fin = new(_path, FileMode.OpenOrCreate))
+            if (File.Exists(_path))
             {
-                try
+                using (FileStream fin = new(_path, FileMode.OpenOrCreate))
                 {
-                    vehicle = await JsonSerializer.DeserializeAsync<Vehicle>(fin);
-                }
-                catch
-                {
-                    vehicle = new Vehicle();
+                    return await JsonSerializer.DeserializeAsync<Vehicle>(fin);
                 }
             }
-            return vehicle;
+            
+            return new Vehicle();
         }
     }
 }

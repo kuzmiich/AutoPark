@@ -1,12 +1,13 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace Autopark.FactoryMethod.AbstractCreator
 {
     /// <summary>
     /// Base class for create transport
     /// </summary>
-    abstract class Creator
+    public abstract class Creator
     {
         /// <summary>
         /// Has info about producer country
@@ -17,6 +18,7 @@ namespace Autopark.FactoryMethod.AbstractCreator
             ProducerCountry = producerCountry;
         }
 
+        [MaxLength(100)]
         public abstract string ProducerCountry { get; set; }
 
         /// <summary>

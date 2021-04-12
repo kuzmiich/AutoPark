@@ -1,7 +1,6 @@
 ﻿namespace Autopark.Entity.Interface
-
 {
-    interface IMovable
+    public interface IMovable
     {
         string Move();
     }

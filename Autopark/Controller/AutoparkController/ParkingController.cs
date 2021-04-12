@@ -1,4 +1,5 @@
 ﻿using Autopark.Entity.Class;
+using Autopark.Model.Service;
 using Autopark.Model.Service.AutoparkService;
 using Autopark.View;
 using System;
@@ -14,9 +15,9 @@ namespace Autopark.Controller.AutoparkController
             _consoleOutput = consoleOutput;
         }
 
-        private static List<Vehicle> _transport;
-        private static IOutputService _consoleOutput;
-        private static readonly ParkingService _parkingService = new();
+        private List<Vehicle> _transport;
+        private IOutputService _consoleOutput;
+        private static readonly IParkingService _parkingService = new ParkingService();
 
 
         public void RunController()

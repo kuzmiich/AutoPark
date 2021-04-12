@@ -1,4 +1,5 @@
 ﻿using Autopark.Entity.Class;
+using Autopark.Model.Service;
 using Autopark.Model.Service.AutoperkService;
 using Autopark.View;
 using System.Collections.Generic;
@@ -18,22 +19,22 @@ namespace Autopark.Controller.AutoparkController
         public VehicleInfoController(List<Vehicle> transport, IOutputService consoleOutput)
         {
             _transport = transport;
-            _consoleOutput = consoleOutput;
+            _outputService = consoleOutput;
         }
 
-        private static List<Vehicle> _transport;
-        private static IOutputService _consoleOutput;
-        private static readonly VehicleInfoService _vehicleInfoService = new();
+        private List<Vehicle> _transport;
+        private IOutputService _outputService;
+        private static readonly IVehicleInfoService _vehicleInfoService = new VehicleInfoService();
 
         public void RunController()
         {
-            _consoleOutput.ShowMessage($"Max mileage = {_vehicleInfoService.MaxMileage(_transport)}");
-            _consoleOutput.ShowMessage($"Min mileage = {_vehicleInfoService.MinMileage(_transport)}");
-            _consoleOutput.ShowMessage($"Total mileage = {_vehicleInfoService.TotalMileage(_transport)}");
-            _consoleOutput.ShowMessage($"Total fuel capacity = {_vehicleInfoService.TotalFuelCapacity(_transport)}");
-            _consoleOutput.ShowMessage($"Total weight = {_vehicleInfoService.TotalWeight(_transport)}");
+            _outputService.ShowMessage($"Max mileage = {_vehicleInfoService.MaxMileage(_transport)}");
+            _outputService.ShowMessage($"Min mileage = {_vehicleInfoService.MinMileage(_transport)}");
+            _outputService.ShowMessage($"Total mileage = {_vehicleInfoService.TotalMileage(_transport)}");
+            _outputService.ShowMessage($"Total fuel capacity = {_vehicleInfoService.TotalFuelCapacity(_transport)}");
+            _outputService.ShowMessage($"Total weight = {_vehicleInfoService.TotalWeight(_transport)}");
 
-            _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
+            _outputService.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }
 }
