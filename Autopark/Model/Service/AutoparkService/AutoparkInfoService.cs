@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Autopark.Model.Service.AutoperkService
+namespace Autopark.Model.Service.AutoparkService
 {
     public class AutoparkInfoService : IAutoparkInfoService
     {
@@ -30,7 +30,7 @@ namespace Autopark.Model.Service.AutoperkService
         /// <returns>Some number random vehicle</returns>
         public void BuyVehicle(List<Vehicle> transport, int count, VehicleType type)
         {
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 BuyVehicle(transport, type);
             }
@@ -52,15 +52,20 @@ namespace Autopark.Model.Service.AutoperkService
         }
 
         /// <summary>
-        /// 
+        /// Sell vehicles and return car costs
         /// </summary>
         /// <param name="transport"></param>
         /// <param name="count"></param>
         /// <returns></returns>
         public decimal SellVehicle(List<Vehicle> transport, int count)
         {
+            if (transport == null)
+            {
+                throw new ArgumentNullException("Transport can`t be null");
+            }
+
             decimal totalCost = 0;
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 totalCost += SellVehicle(transport);
             }
@@ -68,14 +73,18 @@ namespace Autopark.Model.Service.AutoperkService
         }
 
         /// <summary>
-        /// 
+        /// Sell one vehicle and return car costs
         /// </summary>
         /// <param name="transport"></param>
         /// <returns></returns>
         public decimal SellVehicle(List<Vehicle> transport)
         {
-            int lastVehicleIndex = transport.Count - 1;
-            decimal totalCost = transport[lastVehicleIndex].Cost;
+            if (transport == null)
+            {
+                throw new ArgumentNullException("Transport can`t be null");
+            }
+
+            decimal totalCost = transport[transport.Count - 1].Cost;
             transport.RemoveAt(transport.Count - 1);
 
             return totalCost;
@@ -83,18 +92,23 @@ namespace Autopark.Model.Service.AutoperkService
 
         public static decimal TotalVehicleCost(List<Vehicle> transport)
         {
+            if (transport == null)
+            {
+                throw new ArgumentNullException("Transport can`t be null");
+            }
+
             return transport.Sum(x => x.Cost);
         }
 
-        public static IOrderedEnumerable<Vehicle> SortByCreteria(List<Vehicle> transport, SortingCriteriaType sortingCreteria)
+        public static IOrderedEnumerable<Vehicle> SortByCriteria(List<Vehicle> transport, SortingCriteriaType sortingCriteria)
         {
-            return (int)sortingCreteria switch
+            return (int)sortingCriteria switch
             {
                 0 => transport.OrderBy(x => x.Id),
                 1 => transport.OrderBy(x => x.Cost),
                 2 => transport.OrderBy(x => x.Weight),
                 3 => transport.OrderBy(x => x.TotalFuelCapacity),
-                _ => throw new ArgumentException("Sort createria not valid")
+                _ => throw new ArgumentException("Sort criteria not valid")
             };
         }
     }

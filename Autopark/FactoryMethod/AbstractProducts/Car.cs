@@ -16,13 +16,12 @@ namespace Autopark.FactoryMethod.AbstractProduct
 
         public Car(int id,
             ColorType color,
-            RentPeriod rentPeriod,
             decimal cost,
             long weight,
             int mileage,
             int totalFuelCapacity,
             string brand) 
-            : base(id, color, rentPeriod, cost, weight, mileage, totalFuelCapacity, brand)
+            : base(id, color, cost, weight, mileage, totalFuelCapacity, brand)
         {
         }
 

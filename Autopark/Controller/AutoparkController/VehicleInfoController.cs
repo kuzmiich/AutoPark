@@ -1,6 +1,6 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Model.Service;
-using Autopark.Model.Service.AutoperkService;
+using Autopark.Model.Service.AutoparkService;
 using Autopark.View;
 using System.Collections.Generic;
 

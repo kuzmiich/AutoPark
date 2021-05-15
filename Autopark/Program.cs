@@ -23,17 +23,9 @@ namespace Autopark
         {
 
             _consoleOutput.ShowMessage("Input count of car in the autopark:");
-            var vehicleNumber = 0;
-            try
-            {
-                vehicleNumber = Convert.ToInt32(_consoleInput.GetString());
-            }
-            catch
-            {
-                throw new ArgumentException("Error, input number.");
-            }
+            var vehicleNumber = int.Parse(_consoleInput.GetString() ?? string.Empty);
 
-            List<Vehicle> listMotoCarsAndTrucks = _generator.GetCars(vehicleNumber).Union(_generator.GetTrucks(vehicleNumber)).ToList();
+            var listMotoCarsAndTrucks = _generator.GetCars(vehicleNumber).Union(_generator.GetTrucks(vehicleNumber)).ToList();
 
             var controllers = new List<IContoller>
             {

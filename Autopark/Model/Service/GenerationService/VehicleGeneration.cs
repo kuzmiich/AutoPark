@@ -53,16 +53,14 @@ namespace Autopark.Model.Service.GenerationService
             int truckWeight = _random.Next(5000, 50000);
             int mileage = _random.Next(0, 100000);
             int totalFuelCapacity = _random.Next(50, 150);
-            RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
             _manager = new TruckCreator(ProducerContries[produceContriesIndex]);
 
-            return _manager.CreateVehicle(id, Colors[colorIndex], rentPeriod, truckWeight, cost, mileage, totalFuelCapacity, VehicleBrand.TruckBrand[brandIndex]);
+            return _manager.CreateVehicle(id, Colors[colorIndex], truckWeight, cost, mileage, totalFuelCapacity, VehicleBrand.TruckBrand[brandIndex]);
         }
 
         
         public Vehicle GetCar(int id)
         {
-            RentPeriod rentPeriod = new(_random.Next(1, 30), _random.Next(1, 4));
             int motoCarWeight = _random.Next(3000, 20000);
             int mileage = _random.Next(0, 50000);
             int totalFuelCapacity = _random.Next(30, 60);
@@ -83,7 +81,6 @@ namespace Autopark.Model.Service.GenerationService
             _manager = new CarCreator(ProducerContries[produceContrieIndex]);
             return _manager.CreateVehicle(id,
                 Colors[colorIndex],
-                rentPeriod,
                 motoCarWeight,
                 cost,
                 mileage,

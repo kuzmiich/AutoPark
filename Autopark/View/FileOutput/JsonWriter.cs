@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Autopark.View.FileOutput
 {
-    public class JsonWriter : IJsonOutputService
+    public class JsonWriter : IVehicleOutputService
     {
         private static string _path;
 

@@ -1,7 +1,7 @@
 ﻿using Autopark.Entity.Class;
 using Autopark.Entity.Enum;
 using Autopark.Model.Service;
-using Autopark.Model.Service.AutoperkService;
+using Autopark.Model.Service.AutoparkService;
 using Autopark.View;
 using System.Collections.Generic;
 
@@ -36,7 +36,7 @@ namespace Autopark.Controller.AutoparkController
             _autoparkInfoService.SellVehicle(_transport, 2);
             _consoleOutput.ShowMessage($"Sell 2 vehicle. Vehicle count - {_transport.Count}");
 
-            _consoleOutput.ShowMessage($"Sort by Id: \n{string.Join('\n', AutoparkInfoService.SortByCreteria(_transport, SortingCriteriaType.Id))}");
+            _consoleOutput.ShowMessage($"Sort by Id: \n{string.Join('\n', AutoparkInfoService.SortByCriteria(_transport, SortingCriteriaType.Id))}");
             _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }
     }

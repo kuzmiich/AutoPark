@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Autopark.View
 {
-    public interface IJsonOutputService
+    public interface IVehicleOutputService
     {
         void WriteFile(List<Vehicle> vehicles);
         void WriteFile(Vehicle vehicle);

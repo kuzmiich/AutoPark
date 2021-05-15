@@ -12,7 +12,6 @@ namespace Autopark.Entity.Class
 
         public Vehicle(int id,
                        ColorType color,
-                       RentPeriod rentPeriod,
                        decimal cost,
                        long weight,
                        int mileage,
@@ -21,7 +20,6 @@ namespace Autopark.Entity.Class
         {
             Id = id;
             Color = color;
-            RentPeriod = rentPeriod;
             Cost = cost;
             Weight = weight;
             Mileage = mileage;
@@ -34,8 +32,6 @@ namespace Autopark.Entity.Class
         public virtual int Id { get; set; }
 
         public virtual ColorType Color { get; set; }
-
-        public virtual RentPeriod RentPeriod { get; set; }
 
         [Range(1, double.MaxValue)]
         public decimal Cost { get; set; }
@@ -61,8 +57,8 @@ namespace Autopark.Entity.Class
 
         public override string ToString()
         {
-            return $"Id - {Id}, Color - {Color}, Rent period hour number - {RentPeriod.HourNumber}" +
-                   $"Cost - {Cost}, Weight - {Weight}, Mileage - {Mileage}, Total fuel capacity - {TotalFuelCapacity}";
+            return $"Id - {Id}, Color - {Color} Cost - {Cost}, Weight - {Weight}, Mileage - {Mileage}," +
+                $"Total fuel capacity - {TotalFuelCapacity}";
         }
     }
 }

@@ -15,7 +15,6 @@ namespace Autopark.FactoryMethod.CreateArea
 
         public override Vehicle CreateVehicle(int id,
             ColorType colorType,
-            RentPeriod rentPeriod,
             long weight,
             decimal cost,
             int mileage,
@@ -23,7 +22,7 @@ namespace Autopark.FactoryMethod.CreateArea
             string brand
             )
         {
-            return new Truck(id, colorType, rentPeriod, cost, weight, mileage, totalFuelCapacity, brand);
+            return new Truck(id, colorType, cost, weight, mileage, totalFuelCapacity, brand);
         }
     }
 }

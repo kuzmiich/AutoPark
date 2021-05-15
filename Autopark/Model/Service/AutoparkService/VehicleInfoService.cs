@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Autopark.Model.Service.AutoperkService
+namespace Autopark.Model.Service.AutoparkService
 {
     public class VehicleInfoService : IVehicleInfoService
     {

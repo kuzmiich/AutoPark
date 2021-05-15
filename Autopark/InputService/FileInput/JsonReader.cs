@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Autopark.InputService.FileInput
 {
-    public class JsonFileReader : IJsonInputService
+    public class JsonFileReader : IVehicleInputService<Vehicle>
     {
         public readonly string _path;
 

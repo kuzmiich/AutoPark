@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Autopark.InputService
 {
-    public interface IJsonInputService
+    public interface IVehicleInputService<T> where T : Vehicle
     {
-        Task<List<Vehicle>> GetVehicles();
-        Task<Vehicle> GetVehicle();
+        Task<List<T>> GetVehicles();
+        Task<T> GetVehicle();
     }
 }

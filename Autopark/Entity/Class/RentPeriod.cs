@@ -6,13 +6,13 @@ namespace Autopark.Entity.Class
     public class RentPeriod
     {
         [Range(0, RentCoef.MaxHourOfDay)]
-        public int hourNumber { get; set; }
+        private int _hourNumber;
 
         [Range(0, RentCoef.MaxDayOfWeek)]
-        public int dayNumber { get; set; }
+        private int _dayNumber;
 
         [Range(0, RentCoef.MaxWeekOfMonth)]
-        public int weekNumber { get; set; }
+        private int _weekNumber;
 
         #region Constructors
         public RentPeriod()
@@ -21,21 +21,21 @@ namespace Autopark.Entity.Class
 
         public RentPeriod(int hourNumber)
         {
-            this.hourNumber = hourNumber;
+            _hourNumber = hourNumber;
         }
 
         public RentPeriod(int hourNumber, int dayNumber) : this(hourNumber)
         {
-            this.dayNumber = dayNumber;
+            _dayNumber = dayNumber;
         }
 
         public RentPeriod(int hourNumber, int dayCount, int weekNumber) : this(hourNumber, dayCount)
         {
-            this.weekNumber = weekNumber;
+            _weekNumber = weekNumber;
         }
         #endregion
 
         [Range(0, int.MaxValue)]
-        public int HourNumber => (weekNumber * RentCoef.MaxWeekOfMonth + dayNumber) * RentCoef.MaxHourOfDay + hourNumber;
+        public int HourNumber => (_weekNumber * RentCoef.MaxWeekOfMonth + _dayNumber) * RentCoef.MaxHourOfDay + _hourNumber;
     }
 }

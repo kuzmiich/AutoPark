@@ -24,13 +24,11 @@ namespace Autopark.Controller.AutoparkController
         {
             _consoleOutput.ShowMessage("Parking a vehicle:");
 
-            short vehicleId1 = 5;
-            _consoleOutput.ShowMessage($"Сost of parking space, rent period {_transport[vehicleId1].RentPeriod.HourNumber} hours -" +
-                $"{_parkingService.ParkVehicle(_transport[vehicleId1].RentPeriod)}");
+            _consoleOutput.ShowMessage($"Сost of parking space, rent period { new RentPeriod(10, 3).HourNumber } hours -" +
+                $"{_parkingService.ParkVehicle( new RentPeriod(10, 3)) }");
 
-            short vehicleId2 = 2;
-            _consoleOutput.ShowMessage($"Сost of parking space, rent period {_transport[vehicleId2].RentPeriod.HourNumber} hours -" +
-                $"{_parkingService.ParkVehicle(_transport[vehicleId2].RentPeriod)}");
+            _consoleOutput.ShowMessage($"Сost of parking space, rent period {  new RentPeriod(10, 3).HourNumber  } hours -" +
+                $"{_parkingService.ParkVehicle( new RentPeriod(1, 0, 1) )}");
 
             _consoleOutput.ShowMessage(string.Empty.PadLeft(150, '-'));
         }

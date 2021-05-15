@@ -5,7 +5,7 @@ namespace Autopark.Entity.Const
 {
     public static class VehicleBrand
     {
-        public const string Lamborghini = "";
+        public const string Lamborghini = "Lamborghini";
         public const string Lada = "Lada";
 
         public static List<string> CarBrand => new()
@@ -15,6 +15,7 @@ namespace Autopark.Entity.Const
         };
 
         public const string Zil = "Zil";
+        public const string Man = "Man";
 
         public static List<string> TruckBrand => new() 
         { 

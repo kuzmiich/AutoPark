@@ -1,5 +1,5 @@
 ﻿using Autopark.Entity.Class;
-using Autopark.Model.Service.AutoperkService;
+using Autopark.Model.Service.AutoparkService;
 using Autopark.View;
 using System.Collections.Generic;
 
@@ -10,6 +10,11 @@ namespace Autopark.Controller.AutoparkController
     /// </summary>
     class LeasingController : IContoller
     {
+
+
+        private List<Vehicle> _transport;
+        private IOutputService _consoleOutput;
+        private static readonly LeasingService _leasingService = new();
         /// <summary>
         /// 
         /// </summary>
@@ -20,10 +25,6 @@ namespace Autopark.Controller.AutoparkController
             _transport = transport;
             _consoleOutput = consoleOutput;
         }
-
-        private List<Vehicle> _transport;
-        private IOutputService _consoleOutput;
-        private static readonly LeasingService _leasingService = new();
 
 
         public void RunController()
