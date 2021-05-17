@@ -47,7 +47,7 @@ namespace Autopark.Tests
             var ex = Assert.ThrowsException<ArgumentException>(() => new LeasingService().RentVehicle(transport, period, id));
 
             // assert
-            Assert.AreEqual(ex.Message, "Error, invalid id.");
+            Assert.AreEqual("Error, invalid id.", ex.Message);
         }
 
         [TestMethod]
@@ -69,7 +69,7 @@ namespace Autopark.Tests
             var ex = Assert.ThrowsException<ArgumentOutOfRangeException>(() => new LeasingService().RentVehicle(transport, period, id));
 
             // assert
-            Assert.AreEqual(ex.ParamName, "Error, this vehicle brand not found");
+            Assert.AreEqual("Error, this vehicle brand not found", ex.ParamName);
         }
         #endregion
 
@@ -91,7 +91,7 @@ namespace Autopark.Tests
             var ex = Assert.ThrowsException<ArgumentNullException>(() => new LeasingService().RentVehicle(transport, period, id));
 
             // assert
-            Assert.AreEqual(ex.ParamName, "Error, vehicle brand not found");
+            Assert.AreEqual("Error, vehicle brand not found", ex.ParamName);
         }
         #endregion
     }

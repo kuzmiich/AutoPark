@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Autopark.View
 {
-    public interface IVehicleOutputService
+    public interface IVehicleOutputService<T> where T : Vehicle
     {
-        void WriteFile(List<Vehicle> vehicles);
-        void WriteFile(Vehicle vehicle);
+        void WriteFile(List<T> vehicles);
+        void WriteFile(T vehicle);
     }
 }

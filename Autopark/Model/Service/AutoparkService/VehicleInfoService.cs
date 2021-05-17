@@ -15,7 +15,7 @@ namespace Autopark.Model.Service.AutoparkService
         {
             if (vehicles is null)
             {
-                throw new ArgumentNullException("Error, vehicle is null");
+                throw new ArgumentNullException("Error, vehicles is null");
             }
             return vehicles.Sum(x => x.Weight);
         }
@@ -24,7 +24,7 @@ namespace Autopark.Model.Service.AutoparkService
         {
             if (vehicles is null)
             {
-                throw new ArgumentNullException("Error, vehicle is null");
+                throw new ArgumentNullException("Error, vehicles is null");
             }
             return vehicles.Max(x => x.Mileage);
         }
@@ -33,7 +33,7 @@ namespace Autopark.Model.Service.AutoparkService
         {
             if (vehicles is null)
             {
-                throw new ArgumentNullException("Error, vehicle is null");
+                throw new ArgumentNullException("Error, vehicles is null");
             }
             return vehicles.Min(x => x.Mileage);
         }
@@ -42,7 +42,7 @@ namespace Autopark.Model.Service.AutoparkService
         {
             if (vehicles is null)
             {
-                throw new ArgumentNullException("Error, vehicle is null");
+                throw new ArgumentNullException("Error, vehicles is null");
             }
             return vehicles.Sum(x => x.Mileage);
         }
@@ -51,7 +51,7 @@ namespace Autopark.Model.Service.AutoparkService
         {
             if (vehicles is null)
             {
-                throw new ArgumentNullException("Error, vehicle is null");
+                throw new ArgumentNullException("Error, vehicles is null");
             }
             return vehicles.Sum(x => x.TotalFuelCapacity);
         }
